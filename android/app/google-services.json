@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "898055442579",
+    "project_id": "pylera-45ddf",
+    "storage_bucket": "pylera-45ddf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898055442579:android:40bbb5b3c7dba55d387d66",
+        "android_client_info": {
+          "package_name": "com.pylera"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlKkg8dlJJnZVlK6MA7-dEDwK_btn8vn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

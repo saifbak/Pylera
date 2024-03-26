@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/DroidSansArabic.ttf",
+      "sha1": "c9e89e81e6b020096bca00e9a37e8ad34b9bec33"
+    },
+    {
+      "path": "assets/fonts/Poppins-Medium.ttf",
+      "sha1": "5c96d1545a51c39e05ee0fcc0c3c9021f14d9c31"
+    },
+    {
+      "path": "assets/fonts/SegoeUI-Bold.ttf",
+      "sha1": "cd8bbbbe216fe1d71bd3b97514f632284f6e8d3c"
+    },
+    {
+      "path": "assets/fonts/SegoeUI-SemiBold.ttf",
+      "sha1": "bebd50d1ef69796f0eb10d5a1eb3d9a9752195b3"
+    },
+    {
+      "path": "assets/fonts/SegoeUI-SemiLight.ttf",
+      "sha1": "dfbd7f34dd95331e8f0c71888318fd76a828a2a9"
+    },
+    {
+      "path": "assets/fonts/SegoeUI.ttf",
+      "sha1": "f22227c9d581afb1ab9462638e5425cf97062d1d"
+    },
+    {
+      "path": "assets/fonts/أندرويد سانس عربي.ttf",
+      "sha1": "c9e89e81e6b020096bca00e9a37e8ad34b9bec33"
+    }
+  ]
+}
