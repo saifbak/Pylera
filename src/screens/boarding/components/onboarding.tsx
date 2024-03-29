@@ -32,7 +32,7 @@ const Onboarding = ({ navigation }: any) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={'#4597cf'} />
-            <View style={{ flex: 1, marginTop: 30, }}>
+            <View style={{ flex: 1, marginTop: verticalScale(30), }}>
 
                 <Swiper
                     loop={false}
@@ -49,10 +49,10 @@ const Onboarding = ({ navigation }: any) => {
                     {detailsContent.map((detail, index) => (
                         <View key={index} style={{ flex: 1, }}>
                             {index === 0 ?
-                                <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
+                                <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
                                     <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
-                                        <View style={{ width: 70 }} />
-                                        <TouchableOpacity style={{ width: 50 }} onPress={() => onboard()}>
+                                        <View style={{ width: scale(70) }} />
+                                        <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                             <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -64,44 +64,44 @@ const Onboarding = ({ navigation }: any) => {
 
                                     </View>
                                     <View style={{ justifyContent: "center", alignSelf: "center", }}>
-                                        <Image source={ICONS.ob1} style={{ width: scale(500), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
+                                        <Image source={ICONS.ob1} style={{ width: scale(420), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
                                     </View>
                                 </View>
                                 : index === 1 ?
-                                    <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
+                                    <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
                                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
-                                            <View style={{ width: 70 }} />
-                                            <TouchableOpacity style={{ width: 50 }} onPress={() => onboard()}>
+                                            <View style={{ width: scale(70) }} />
+                                            <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                                 <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ justifyContent: "space-around", height: vs(100), alignItems: "center" }}>
                                             <View>
-                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: -10, marginTop: -10 }}>Simple & convenient</Text>
+                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: verticalScale(-10) }}>Simple & convenient</Text>
                                                 <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0, width: scale(260) }}>The ability to creat long intake courses User-friendly application to help achieving best treatment outcomes.</Text>
                                             </View>
                                         </View>
                                         <View style={{ justifyContent: "center", alignSelf: "center", }}>
-                                            <Image source={ICONS.ob2} style={{ width: scale(500), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
+                                            <Image source={ICONS.ob2} style={{ width: scale(420), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
                                         </View>
                                     </View>
                                     : index === 2 ?
-                                        <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
+                                        <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: (15), }}>
                                             <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
-                                                <View style={{ width: 70 }} />
+                                                <View style={{ width: scale(70) }} />
                                                 {/* <View style={styles.indicator} /> */}
-                                                <TouchableOpacity style={{ width: 50 }} onPress={() => onboard()}>
+                                                <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                                     <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ justifyContent: "space-around", height: vs(100) }}>
                                                 <View>
-                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: FONTS.semibold, marginBottom: -10, marginTop: -10 }}>Education Tool</Text>
+                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: vs(-10) }}>Education Tool</Text>
                                                     <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0 }}>Helps learning about H. pylori.</Text>
                                                 </View>
                                             </View>
                                             <View style={{ justifyContent: "center", alignSelf: "center", }}>
-                                                <Image source={ICONS.ob3} style={{ width: scale(500), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
+                                                <Image source={ICONS.ob3} style={{ width: scale(420), height: scale(420), resizeMode: "contain", alignSelf: "center" }} />
                                             </View>
                                         </View>
                                         : null

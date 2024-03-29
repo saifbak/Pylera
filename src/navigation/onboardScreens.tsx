@@ -8,11 +8,11 @@ import Splash from '../screens/boarding/components/splash';
 import BottomTabs from './bottomTab';
 
 export type AppStackParams = {
-    Home: undefined;
-    Discover: undefined;
-    Treatment: undefined;
-    Medication: undefined;
-    Dose: undefined;
+    Onboarding: undefined;
+    // Discover: undefined;
+    // Treatment: undefined;
+    // Medication: undefined;
+    // Dose: undefined;
 }
 
 const horizontalAnimation = {
@@ -40,7 +40,7 @@ const onboardScreens = () => {
         <OnboardStackScreens.Navigator
             screenOptions={horizontalAnimation}
         >
-            <OnboardStackScreens.Screen name="Home" component={Onboarding} />
+            <OnboardStackScreens.Screen name="Onboarding" component={Onboarding} />
         </OnboardStackScreens.Navigator>
     )
 }
