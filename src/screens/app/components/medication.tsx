@@ -289,11 +289,11 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     textAlignVertical: 'top',
                                                                 }}>®
                                                                 </Text>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Warning</Text>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Drug</Text>
 
                                                             </View>
                                                             <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>& Precautions</Text>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Interactions</Text>
                                                                 <Text style={{
                                                                     fontFamily: FONTS.h1, color: COLORS.primary,
                                                                     fontSize: vs(13),

@@ -101,13 +101,6 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Get the current year
     const currentYear = currentDate.getFullYear();
 
-    console.log(`Current Month in Decimal Wording: ${currentMonth}`);
-
-    console.log(`Current Month: ${currentMonth}`);
-    console.log(`Current Month Index: ${currentMonthIndex}`);
-
-    console.log(`Current Year: ${currentYear}`);
-
     function getDaysOfMonth(month: number, year: number): { day: string; date: number }[] {
         const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -131,7 +124,6 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     const daysOfMonth = getDaysOfMonth(currentMonthIndex + 1, currentYear);
 
-    console.log(daysOfMonth);
 
     interface TimeSlot {
         hour: number;
