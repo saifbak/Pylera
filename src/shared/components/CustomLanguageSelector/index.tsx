@@ -5,31 +5,32 @@ import { FONTS, ICONS } from '../../utils/theme'
 
 type CustomLanguageSelectorProps = {
     select: string;
-    setSelected: Dispatch<SetStateAction<string>>;
+    onSelect: (language: string) => void;
 }
 
 const CustomLanguageSelector: FC<CustomLanguageSelectorProps> = ({
-    select, setSelected
+    select,
+    onSelect
 }: CustomLanguageSelectorProps) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={select === 'english' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70), }}
+            <TouchableOpacity style={select === 'en' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70), }}
                 onPress={() => {
-                    setSelected('english')
+                    onSelect('en')
                 }}
             >
                 <Text style={{ color: '#1d3660', fontSize: vs(15), fontWeight: 'bold' }}>English</Text>
-                {select === 'english' && <View style={{ borderRadius: 100, width: scale(20), height: vs(20), borderColor: '#1a9dd8', borderWidth: 1.5, alignItems: "center", justifyContent: 'center', }}>
+                {select === 'en' && <View style={{ borderRadius: 100, width: scale(20), height: vs(20), borderColor: '#1a9dd8', borderWidth: 1.5, alignItems: "center", justifyContent: 'center', }}>
                     <Image source={ICONS.check_mark} style={{ width: scale(20), height: vs(20), resizeMode: 'contain', left: 3, bottom: 2 }} />
                 </View>}
             </TouchableOpacity>
-            <TouchableOpacity style={select === 'arabic' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70) }}
+            <TouchableOpacity style={select === 'ar' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70) }}
                 onPress={() => {
-                    setSelected('arabic')
+                    onSelect('ar')
                 }}
             >
                 <Text style={{ color: '#1d3660', fontSize: vs(15), fontFamily: FONTS.text_arabic }}>العــــربية</Text>
-                {select === 'arabic' && <View style={{ borderRadius: 100, width: scale(20), height: vs(20), borderColor: '#1a9dd8', borderWidth: 1.5, alignItems: "center", justifyContent: 'center' }}>
+                {select === 'ar' && <View style={{ borderRadius: 100, width: scale(20), height: vs(20), borderColor: '#1a9dd8', borderWidth: 1.5, alignItems: "center", justifyContent: 'center' }}>
                     <Image source={ICONS.check_mark} style={{ width: scale(20), height: vs(20), resizeMode: 'contain', left: 3, bottom: 2 }} />
                 </View>}
             </TouchableOpacity>

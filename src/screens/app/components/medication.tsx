@@ -5,6 +5,7 @@ import Swiper from 'react-native-swiper';
 import { COLORS, FONTS, ICONS } from '../../../shared/utils/theme';
 import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import CheckBox from '@react-native-community/checkbox';
+import { useTranslation } from 'react-i18next';
 const detailsContent = [
     'Detail 1',
     'Detail 2',
@@ -15,6 +16,7 @@ const detailsContent = [
 ];
 
 const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
+    const { t } = useTranslation()
     const [currentIndex, setCurrentIndex] = useState(0);
     const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false)
     const [proceed, setProceed] = useState<boolean>(false)
@@ -41,10 +43,10 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                 {proceed === false ?
                     <>
                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, }}>
-                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Back</Text></Pressable>
+                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                             <Image source={ICONS.caution} style={{ width: scale(180), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(13) }}>This is a Medicament</Text>
+                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(13) }}>{t("medical-heading")}</Text>
                                 <Text style={{
                                     fontFamily: FONTS.h1, color: COLORS.secondary,
                                     fontSize: vs(8),
@@ -54,14 +56,14 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 }}>20
                                 </Text>
                             </View>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Medication is a product that affects your health, and its consumption contrary to instructions is dangerous for you.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Strictly follow the doctor's prescription, the method of use, and the instructions of the pharmacist who sold the medication.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>The doctor and the pharmacist are experts in medicines, their benefits, and risks.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Do not interrupt the treatment period prescribed for you.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Do not repeat the same prescription without consulting your doctor.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Keep all medications out of reach of children.</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>In the event of an adverse event occurring from any of NewBridge Pharmaceuticals Licensed products, kindly report them to the NewBridge Safety Mailbox</Text>
-                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.primary, fontSize: vs(12), textAlign: "justify" }}>safety@nbpharma.com</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-1")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-2")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-3")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-4")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-5")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-6")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-7")}</Text>
+                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.primary, fontSize: vs(12), textAlign: "justify" }}>{t('email')}</Text>
                             <View style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}>
                                 <CheckBox
                                     disabled={false}
@@ -74,14 +76,14 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         true: COLORS.primary
                                     }}
                                 />
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>I have clearly read and understood the above</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('agreement')}</Text>
                             </View>
                         </View>
                         <View style={{ width: scale(120), position: "absolute", bottom: 30, alignSelf: "center", alignItems: "center" }}>
                             <TouchableOpacity
                                 disabled={!toggleCheckBox}
                                 style={{ backgroundColor: toggleCheckBox === true ? COLORS.primary : COLORS.gray, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={() => setProceed(true)}  >
-                                <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{'PROCEED TO VIEW CONTENT'} </Text>
+                                <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{t('proceed')} </Text>
                             </TouchableOpacity>
                         </View>
                     </>
@@ -122,15 +124,14 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 </Text>
                                             </View>
                                         </View>
-                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>PYLERA® is a combination of metronidazole, a nitroimidazole antimicrobial, tetracycline,- a tetracycline class antimicrobial and bismuth subcitrate potassium, indicated for use, in combination with omeprazole, for the treatment of patients with Helicobacter pylori infection and duodenal ulcer disease (active or history of within the past 5 years) to eradicate H. pylori.</Text>
-                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>To reduce the development of drug-resistant bacteria and maintain the effectiveness of PYLERA® and other antibacterial drugs, PYLERA® should be used only to treat or prevent infections that are proven or strongly suspected to be caused by bacteria.</Text>
+                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>{t('pylera-para')}</Text>
+                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>{t("pylera-para-2")}</Text>
                                     </View>
                                     : index === 1 ?
                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-
                                             <View style={{ flexDirection: "row" }}>
                                                 <View style={{ flexDirection: "row" }}>
-                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
+                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
                                                     <Text style={{
                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                         fontSize: vs(17),
@@ -150,38 +151,38 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </Text>
                                                 </View>
                                             </View>
-                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>Administer three PYLERA® capsules 4 times a day (after meals and at bedtime) for 10 days. Administer PYLERA® with omeprazole 20 mg twice daily (after the morning and evening meals).</Text>
-                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>Daily Dosing Schedule for PYLERA®</Text>
+                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('dose-para-2')}</Text>
+                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('dose-heading-2')}</Text>
                                             <View style={styles.table}>
                                                 <View style={styles.row}>
-                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>Time of dose</Text>
-                                                    <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>Time of dose Number of capsules of PLYERA®</Text>
-                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>Number of capsules of OMEPRAZOLE® 20 mg</Text>
+                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>{t("table-heading-1")}</Text>
+                                                    <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>{t("table-heading-2")}</Text>
+                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>{t("table-heading-3")}</Text>
                                                 </View>
                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                    <Text style={styles.cell}>After morning meal</Text>
+                                                    <Text style={styles.cell}>{t('table-1-data-1')}</Text>
                                                     <Text style={styles.cell}>3</Text>
                                                     <Text style={styles.cell}>1</Text>
                                                 </View>
                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                    <Text style={styles.cell}>After lunch</Text>
+                                                    <Text style={styles.cell}>{t('table-1-data-2')}</Text>
                                                     <Text style={styles.cell}>3</Text>
                                                     <Text style={styles.cell}>0</Text>
                                                 </View>
                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                    <Text style={styles.cell}>After evening meal</Text>
+                                                    <Text style={styles.cell}>{t('table-1-data-3')}</Text>
                                                     <Text style={styles.cell}>3</Text>
                                                     <Text style={styles.cell}>1</Text>
                                                 </View>
                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                    <Text style={styles.cell}>At bedtime</Text>
+                                                    <Text style={styles.cell}>{t('table-1-data-4')}e</Text>
                                                     <Text style={styles.cell}>3</Text>
                                                     <Text style={styles.cell}>0</Text>
                                                 </View>
                                             </View>
-                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 5 }}>Patients are instructed to swallow the PYLERA® capsules whole with a full glass of water (8 ounces). Ingestion of adequate amounts of fluid, particularly with the bedtime dose, is recommended to reduce the risk of esophageal irritation and ulceration by tetracycline hydrochloride.</Text>
-                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>Daily Dosing Schedule for PYLERA®</Text>
-                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -5 }}>If a dose is missed, patients should continue the normal dosing schedule until medication is gone. Patients should not take double doses. If more than 4 doses are missed, the prescriber should be contacted.</Text>
+                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 5 }}>{t('dose-para-2')}</Text>
+                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('dose-heading-2')}</Text>
+                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -5 }}>{t('dose-para-3')}</Text>
                                         </View>
                                         : index === 2 ?
                                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
@@ -208,11 +209,11 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         </Text>
                                                     </View>
                                                 </View>
-                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>Most frequently reported adverse reactions (≥5%):</Text>
-                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text> abnormal feces</Text>
-                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text> diarrhea</Text>
-                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text> nausea</Text>
-                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text> headache</Text>
+                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>{t('adverse-para')}</Text>
+                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('adverse-li-1')}</Text>
+                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('adverse-li-2')}</Text>
+                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('adverse-li-3')}</Text>
+                                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('adverse-li-4')}</Text>
                                             </View>
                                             : index === 3 ?
                                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
@@ -241,18 +242,18 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             </Text>
                                                         </View>
                                                     </View>
-                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}>Lactation:</Text>
-                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>Advise the lactating women to pump and discard their milk during treatment with PYLERA and for 2 days after the therapy ends.</Text>
-                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>Hypersensitivity:</Text>
-                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>Inform patients that PYLERA may cause allergic reactions and to discontinue PYLERA® at the first sign of urticaria, erythematous rash, flushing, and fever or other symptoms of an allergic reaction</Text>
-                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>Central nervous system effects:</Text>
-                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>Inform patients of the risk of central and peripheral nervous system effects with PYELRA® and to discontinue PYLERA® and report immediately to their health-care provider if any neurologic symptoms occur.</Text>
-                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>Photosensitivity:</Text>
-                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>Avoid exposure to sun or sun lamps while taking PYLERA®.</Text>
+                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}>{t('patient-heading-1')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>{t('patient-para-1')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>{t('patient-heading-2')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>{t('patient-para-2')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>{t('patient-heading-3')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>{t('patient-para-3')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginTop: -5 }}>{t('patient-heading-4')}</Text>
+                                                    <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -10 }}>{t('patient-para-4')}</Text>
                                                 </View>
                                                 : index === 4 ?
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                        <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginBottom: -20 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Skip</Text></Pressable>
+                                                        <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginBottom: -20 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
                                                         <View style={{ flexDirection: "column" }}>
                                                             <View style={{ flexDirection: "row" }}>
                                                                 <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
@@ -277,8 +278,8 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 </Text>
                                                             </View>
                                                         </View>
-                                                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}>Darkening of the Tongue and/or Black Stool</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>Bismuth subcitrate potassium may cause temporary and harmless darkening of the tongue and/or black stools, generally reversible within several days after treatment is stopped.</Text>
+                                                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}>{t('warning-heading')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('warning-para')}</Text>
                                                         <View style={{ flexDirection: "column" }}>
                                                             <View style={{ flexDirection: "row" }}>
                                                                 <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
@@ -303,20 +304,20 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 </Text>
                                                             </View>
                                                         </View>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>Advise patients to report to their health-care provider the use of any other medications while taking PYLERA®. The administration of any of the following drugs with PYLERA® may result in clinically significant adverse reactions or insufficient drug efficacies:</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Methoxyflurane</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Disulfiram</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Alcohol</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Oral Contraceptives</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Anticoagulants</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Lithium</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Antacids, Multivitamins or Dairy Products</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Busuilfan</Text>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> CYP inducers and CYP inhibitors</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('warning-para2')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-1')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-2')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-3')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-4')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-5')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-6')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-7')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-8')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('drugs-li-9')}</Text>
                                                     </View>
                                                     : index === 5 ?
                                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginBottom: -40 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Skip</Text></Pressable>
+                                                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginBottom: -40 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
 
                                                             <Image source={ICONS.caution2} style={{ width: scale(170), height: vs(180), resizeMode: "contain", alignSelf: "flex-start", marginLeft: -25 }} />
                                                             <View style={{ flexDirection: "column" }}>
@@ -341,13 +342,13 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}><Text style={{ color: COLORS.primary }}>• </Text>Alcohol</Text>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>Abdominal cramps, nausea, vomiting, headaches, and flushing can occur; do not consume during therapy and for at least 3 days afterwards.</Text>
+                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: -5 }}><Text style={{ color: COLORS.primary }}>• </Text>{t('contraindications-heading')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('contraindications-para')}</Text>
 
-                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 10 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Antacids,</Text>
-                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Multivitamins,</Text>
-                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text> Dairy Products</Text>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>These products should not be consumed concomitantly with PYLERA®</Text>
+                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 10 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('contraindications-li-1')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('contraindications-li-2')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('contraindications-li-3')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}>{t('contraindications-para-3')}</Text>
                                                         </View>
                                                         : null
                                 }
@@ -356,10 +357,11 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                     </Swiper>
                         <View style={{ width: scale(120), position: "absolute", bottom: 10, alignSelf: "center", alignItems: "center" }}>
                             <TouchableOpacity style={{ backgroundColor: COLORS.primary, width: scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={handleNext}  >
-                                <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? 'Go Back' : 'Next'} </Text>
+                                <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('go-back') : t('next')} </Text>
                             </TouchableOpacity>
-                            <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(10), textAlign: 'center' }}>Disclaimer & References</Text>
-                        </View></>
+                            <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(10), textAlign: 'center' }}>{("disclaimer-n-references")}</Text>
+                        </View>
+                    </>
                 }
             </View >
         </View >

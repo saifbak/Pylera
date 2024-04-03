@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const useGetStarted = () => {
-  const [select, setSelected] = useState<string>('english');
+  const [select, setSelected] = useState<string>('en');
 
   return {
     select,

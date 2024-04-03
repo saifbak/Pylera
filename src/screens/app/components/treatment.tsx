@@ -8,6 +8,7 @@ import CheckBox from '@react-native-community/checkbox';
 import ReactNativeModal from 'react-native-modal';
 import AlertModal from '../../../shared/components/AlertModal';
 import useTreatment from '../hooks/useTreatment';
+import { useTranslation } from 'react-i18next';
 const detailsContent = [
     'Detail 1',
     'Detail 2',
@@ -16,6 +17,7 @@ const detailsContent = [
 ];
 
 const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
+    const { t } = useTranslation()
     const [currentIndex, setCurrentIndex] = useState(0);
     const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false);
     const [toggleCheckBox2, setToggleCheckBox2] = useState<boolean>(false);
@@ -154,16 +156,16 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     console.log(clockArray);
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
-            <AlertModal isVisible={visible} setVisible={setVisible} title={'Alert'} text={'Please confirm that you have read and understood the above'} onPress={handleModalPressed} />
-            <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={'Alert'} text={'Before proceeding, please make sure the data you have entered is accurate. You will get reminders based on the times you have provided.'} onPress={handleProceedModalPressed} />
+            <AlertModal isVisible={visible} setVisible={setVisible} title={t('alert')} text={t('alart-para-1')} onPress={handleModalPressed} />
+            <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={'Alert'} text={t('alart-para-2')} onPress={handleProceedModalPressed} />
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 {proceed === false ?
                     <>
                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, }}>
-                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Back</Text></Pressable>
+                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                             <Image source={ICONS.caution} style={{ width: scale(280), height: vs(160), resizeMode: "contain", alignSelf: "center", marginVertical: vs(20) }} />
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>This content is only for patients who are prescribed PYLERA®. I acknowledge that I have been prescribed PYLERA®.</Text>
+                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('agreement2')}</Text>
                             </View>
                             <View style={{ flexDirection: "row", alignItems: "center", marginTop: 30 }}>
                                 <CheckBox
@@ -177,14 +179,14 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         true: COLORS.primary
                                     }}
                                 />
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>I have clearly read and understood the above</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('agree')}</Text>
                             </View>
                             <View style={{ width: scale(120), alignSelf: "center", alignItems: "center", marginTop: vs(50) }}>
                                 <TouchableOpacity
                                     disabled={!toggleCheckBox}
                                     style={{ backgroundColor: toggleCheckBox === true ? COLORS.primary : COLORS.gray, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={handleModal}>
-                                    <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{'PROCEED TO VIEW CONTENT'} </Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{t('proceed')} </Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -195,7 +197,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Back</Text></Pressable>
                                 <Image source={ICONS.caution} style={{ width: scale(180), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
                                 <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(13) }}>This is a Medicament</Text>
+                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(13) }}>{t('medical-heading')}</Text>
                                     <Text style={{
                                         fontFamily: FONTS.h1, color: COLORS.secondary,
                                         fontSize: vs(8),
@@ -205,18 +207,18 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     }}>20
                                     </Text>
                                 </View>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Medication is a product that affects your health, and its consumption contrary to instructions is dangerous for you.</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Strictly follow the doctor's prescription, the method of use, and the instructions of the pharmacist who sold the medication.</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>The doctor and the pharmacist are experts in medicines, their benefits, and risks.</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Do not interrupt the treatment period prescribed for you.</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Do not repeat the same prescription without consulting your doctor.</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>Keep all medications out of reach of children.</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-1')}</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-2')}</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-3')}</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-4')}</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-5')}</Text>
+                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-6')}</Text>
                                 <View style={{ width: scale(120), marginTop: vs(40), alignSelf: "center", alignItems: "center" }}>
                                     <TouchableOpacity
                                         // disabled={!toggleCheckBox}
                                         style={{ backgroundColor: COLORS.primary, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                         onPress={() => setConfirmation(true)}  >
-                                        <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{'PROCEED TO VIEW CONTENT'} </Text>
+                                        <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{t('proceed')}</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -233,7 +235,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     <View key={index} style={{ flex: 1, }}>
                                         {index === 0 ?
                                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Skip</Text></Pressable>
+                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
                                                 <View style={{ backgroundColor: COLORS.yellow, borderColor: COLORS.secondary, borderWidth: 2, height: vs(450), width: '90%', alignSelf: "center" }}>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
 
@@ -251,8 +253,8 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         <Image source={ICONS.date} style={{ width: scale(300), height: vs(250), resizeMode: "contain", marginTop: -50 }} />
                                                     </View>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>To set your treatment plan, please enter the following data, and the application will send you notification reminders to take your dose</Text>
-                                                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>If you have received the first dose, please set the timing of the first dose.</Text>
+                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('date-time-para')}</Text>
+                                                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
                                                         <Text style={styles.month}>{`${currentMonth}, ${currentYear}`}</Text>
                                                         <FlatList
                                                             contentContainerStyle={{ height: vs(55), }}
@@ -306,7 +308,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     true: COLORS.primary
                                                                 }}
                                                             />
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>I haven't administrated any dose.</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('have-not')}.</Text>
                                                         </View>
                                                     </View>
                                                 </>
@@ -317,9 +319,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         </View>
                                                         <View style={{ flex: 2, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                             {/* <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>To set your treatment plan, please enter the following data, and the application will send you notification reminders to take your dose</Text> */}
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>Set your daily meals times :</Text>
+                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>{t('set-meal')}</Text>
                                                             <View>
-                                                                <Text style={styles.Headings}>Breakfast Time</Text>
+                                                                <Text style={styles.Headings}>{t('breakfast-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -338,7 +340,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View style={{}}>
-                                                                <Text style={styles.Headings}>Lunch Time</Text>
+                                                                <Text style={styles.Headings}>{t('lunch-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -357,7 +359,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View>
-                                                                <Text style={styles.Headings}>Dinner Time</Text>
+                                                                <Text style={styles.Headings}>{t('dinner-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -376,7 +378,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View>
-                                                                <Text style={styles.Headings}>Bed Time Snack</Text>
+                                                                <Text style={styles.Headings}>{t('bed-time-snack')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -398,7 +400,6 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </>
                                                     : index === 3 ?
                                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-
                                                             <View style={{ flexDirection: "row" }}>
                                                                 <View style={{ flexDirection: "row" }}>
                                                                     <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
@@ -421,38 +422,38 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>Administer three PYLERA® capsules 4 times a day (after meals and at bedtime) for 10 days. Administer PYLERA® with omeprazole 20 mg twice daily (after the morning and evening meals).</Text>
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>Daily Dosing Schedule for PYLERA®</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('administrator')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
                                                             <View style={styles.table}>
                                                                 <View style={styles.row}>
-                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>Time of dose</Text>
-                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>Time of dose Number of capsules of PLYERA®</Text>
-                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>Number of capsules of OMEPRAZOLE® 20 mg</Text>
+                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>{t('table-heading-1')}</Text>
+                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>{t('table-heading-2')}</Text>
+                                                                    <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>{t('table-heading-3')}</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                                    <Text style={styles.cell}>After morning meal</Text>
+                                                                    <Text style={styles.cell}>{t('table-1-data-1')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>1</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                                    <Text style={styles.cell}>After lunch</Text>
+                                                                    <Text style={styles.cell}>{t('table-1-data-2')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>0</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                                    <Text style={styles.cell}>After evening meal</Text>
+                                                                    <Text style={styles.cell}>{t('table-1-data-3')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>1</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                                    <Text style={styles.cell}>At bedtime</Text>
+                                                                    <Text style={styles.cell}>{t('table-1-data-4')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>0</Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 5 }}>Patients are instructed to swallow the PYLERA® capsules whole with a full glass of water (8 ounces). Ingestion of adequate amounts of fluid, particularly with the bedtime dose, is recommended to reduce the risk of esophageal irritation and ulceration by tetracycline hydrochloride.</Text>
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>Missed Dose</Text>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -5 }}>If a dose is missed, patients should continue the normal dosing schedule until medication is gone. Patients should not take double doses. If more than 4 doses are missed, the prescriber should be contacted.</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('missed-dose-heading')}</Text>
+                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
                                                         </View>
                                                         : null
                                         }
@@ -463,9 +464,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <TouchableOpacity style={{ backgroundColor: currentIndex === detailsContent.length - 1 ? '#b0120f' : COLORS.primary, width: currentIndex === detailsContent.length - 1 ? scale(120) : scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={currentIndex === 2 ? handleProceedModal : handleNext}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? 'Reset Mealtime' : currentIndex === 2 ? "Start" : 'Next'} </Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('reset-mealtimes') : currentIndex === 2 ? t("start") : t('next')} </Text>
                                 </TouchableOpacity>
-                                <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(10), textAlign: 'center' }}>Disclaimer & References</Text>
+                                <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(10), textAlign: 'center' }}>{t('disclaimer-n-references')}</Text>
                             </View></>
                 }
             </View >

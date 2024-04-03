@@ -5,11 +5,12 @@ import { scale, verticalScale, vs } from 'react-native-size-matters'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Swiper from 'react-native-swiper'
 import { AuthContext } from '../../../config/context'
+import { useTranslation } from 'react-i18next'
 
 const Onboarding = ({ navigation }: any) => {
 
     const { onboard } = useContext(AuthContext);
-
+    const { t } = useTranslation();
     const detailsContent = [
         'Detail 1',
         'Detail 2',
@@ -29,6 +30,7 @@ const Onboarding = ({ navigation }: any) => {
         setCurrentIndex(0);
         navigation.navigate('Home');
     };
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={'#4597cf'} />
@@ -53,13 +55,13 @@ const Onboarding = ({ navigation }: any) => {
                                     <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                         <View style={{ width: scale(70) }} />
                                         <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
-                                            <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
+                                            <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>{t('skip')}</Text>
                                         </TouchableOpacity>
                                     </View>
                                     <View style={{ justifyContent: "space-around", height: vs(100) }}>
                                         <View>
-                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: -10, marginTop: -10 }}>All pills on time</Text>
-                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0 }}>Customized notifications are delivered at any time based on your preferences.</Text>
+                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: -10, marginTop: -10 }}>{t("onboard-heading-1")}</Text>
+                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0 }}>{t('onboard-para-1')}</Text>
                                         </View>
 
                                     </View>
@@ -72,13 +74,13 @@ const Onboarding = ({ navigation }: any) => {
                                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                             <View style={{ width: scale(70) }} />
                                             <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
-                                                <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
+                                                <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>{t('skip')}</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ justifyContent: "space-around", height: vs(100), alignItems: "center" }}>
                                             <View>
-                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: verticalScale(-10) }}>Simple & convenient</Text>
-                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0, width: scale(260) }}>The ability to creat long intake courses User-friendly application to help achieving best treatment outcomes.</Text>
+                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(25), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: verticalScale(-10) }}>{t('onboard-heading-2')}</Text>
+                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0, width: scale(260) }}>{t("onboard-para-2")}</Text>
                                             </View>
                                         </View>
                                         <View style={{ justifyContent: "center", alignSelf: "center", }}>
@@ -91,13 +93,13 @@ const Onboarding = ({ navigation }: any) => {
                                                 <View style={{ width: scale(70) }} />
                                                 {/* <View style={styles.indicator} /> */}
                                                 <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
-                                                    <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>Skip</Text>
+                                                    <Text style={{ color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.medium }}>{t('skip')}</Text>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ justifyContent: "space-around", height: vs(100) }}>
                                                 <View>
-                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: vs(-10) }}>Education Tool</Text>
-                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0 }}>Helps learning about H. pylori.</Text>
+                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: FONTS.semibold, marginBottom: vs(-10), marginTop: vs(-10) }}>{t('onboard-heading-3')}</Text>
+                                                    <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(13), fontFamily: FONTS.normal, marginBottom: 0 }}>{t('onboard-para-3')}</Text>
                                                 </View>
                                             </View>
                                             <View style={{ justifyContent: "center", alignSelf: "center", }}>
@@ -114,7 +116,7 @@ const Onboarding = ({ navigation }: any) => {
                     style={{ position: "absolute", bottom: 15, alignSelf: "center", flexDirection: 'row', alignItems: "center", justifyContent: "center", padding: 5 }}>
                     <View style={{ width: 70 }} />
                     <View style={{ width: 100, height: vs(25), borderRadius: 50, backgroundColor: "#4597cf", alignItems: "center", justifyContent: "center" }}>
-                        <Text style={{ color: "#ffffff", fontSize: vs(14), }}>{currentIndex === detailsContent.length - 1 ? "Let's Start" : 'Next'}</Text>
+                        <Text style={{ color: "#ffffff", fontSize: vs(14), }}>{currentIndex === detailsContent.length - 1 ? t("lets-start") : t('next')}</Text>
                     </View>
                     <View style={{ width: 70 }}>
                         <Image source={ICONS.arrow} style={{ width: 30, height: 30, resizeMode: "contain" }} />

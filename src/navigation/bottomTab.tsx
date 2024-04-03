@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/app/components/home';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { scale, vs } from 'react-native-size-matters';
 import { COLORS, ICONS } from '../shared/utils/theme';
 import Discover from '../screens/app/components/discover';
@@ -47,6 +47,7 @@ function MyTabBar({ state, descriptors, navigation }: any) {
 
                 return (
                     <TouchableOpacity
+                        activeOpacity={0.8}
                         accessibilityRole="button"
                         accessibilityState={isFocused ? { selected: true } : {}}
                         accessibilityLabel={options.tabBarAccessibilityLabel}

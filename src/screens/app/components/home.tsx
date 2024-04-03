@@ -5,9 +5,11 @@ import { scale, vs } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AppStackParams } from '../../../navigation/appScreens';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-    const navigation = useNavigation<StackNavigationProp<AppStackParams>>()
+    const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
+    const { t, } = useTranslation();
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <StatusBar barStyle={"light-content"} backgroundColor={COLORS.primary} />
@@ -17,8 +19,9 @@ const Home = () => {
                         <Image source={ICONS.logo} style={{ width: scale(110), height: vs(50), resizeMode: "contain" }} />
                     </View>
                     <View style={{ width: scale(180), paddingLeft: 25, marginTop: -5 }}>
-                        <Text style={{ color: COLORS.white, fontSize: vs(40), fontFamily: FONTS.normal }}>Hello!</Text>
-                        <Text style={{ color: COLORS.white, fontSize: vs(14), fontFamily: FONTS.semibold, textAlign: "left", marginTop: -15 }}>{`I'm Eradicate Assistant,\nhere to remind you of\nyour medicine on time\nand share more\ninformation about\nyour infection and\ntreatment`}</Text>
+                        <Text style={{ color: COLORS.white, fontSize: vs(40), fontFamily: FONTS.normal }}>{t("hello")}</Text>
+                        {/* <Text style={{ color: COLORS.white, fontSize: vs(14), fontFamily: FONTS.semibold, textAlign: "left", marginTop: -15 }}>{`I'm Eradicate Assistant,\nhere to remind you of\nyour medicine on time\nand share more\ninformation about\nyour infection and\ntreatment`}</Text> */}
+                        <Text style={{ color: COLORS.white, fontSize: vs(14), fontFamily: FONTS.semibold, textAlign: "right", marginTop: -15 }}>{t('home-para')}</Text>
                     </View>
                 </View>
                 <View style={{ justifyContent: "space-between", }}>
@@ -35,9 +38,9 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_discover} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: 120 }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, marginBottom: -12, marginTop: 10 }}>Discover</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold }}>H. pylori</Text>
+                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, marginBottom: -12, marginTop: 10 }}>{t("discover")}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold }}>{t('h-pylori')}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -46,9 +49,9 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_medication} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: 120 }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>Medication</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>Guide</Text>
+                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>{t('medication')}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>{t("guide")}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -59,9 +62,9 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_treatment} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: 120 }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>Treatment</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>Plan</Text>
+                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>{t("treatment")}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>{t('plan')}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -70,14 +73,14 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_dose} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: 120 }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>Dose</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>Tracking</Text>
+                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(15), fontFamily: FONTS.bold, marginBottom: -12, marginTop: 10 }}>{t("dose")}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(10), fontFamily: FONTS.normal, }}>{t('tracking')}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(11) }}>Disclaimer & References</Text>
+                <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(11) }}>{t("disclaimer-n-references")}</Text>
             </View>
         </View>
     )

@@ -5,6 +5,7 @@ import { ScaledSheet, scale, verticalScale, vs } from 'react-native-size-matters
 import CustomLanguageSelector from '../../../shared/components/CustomLanguageSelector'
 import useGetStarted from '../hooks/useGetStarted'
 import { AuthContext } from '../../../config/context'
+import useChangeLanguage from '../hooks/useLanguage'
 
 const GetStarted = () => {
     const { getStarted } = useContext(AuthContext);
@@ -12,6 +13,14 @@ const GetStarted = () => {
         select,
         setSelected,
     } = useGetStarted();
+
+    const {
+        checkValue,
+        setCheckValue,
+        t,
+        changeLanguageSelect
+    } = useChangeLanguage();
+
 
     return (
         <View style={styles.container}>
@@ -29,7 +38,7 @@ const GetStarted = () => {
                         <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(14), fontFamily: FONTS.bold }}>Choose your preferred language</Text>
                         <Text style={{ marginBottom: 50, textAlign: "center", color: '#1d3660', fontSize: verticalScale(14), fontFamily: FONTS.text_arabic }}>يرجى اختيار لغتك المفضلة</Text>
                     </View>
-                    <CustomLanguageSelector select={select} setSelected={setSelected} />
+                    <CustomLanguageSelector select={select} onSelect={(e: string) => { setSelected(e), changeLanguageSelect(e) }} />
                     <TouchableOpacity
                         onPress={getStarted}
                         style={{ backgroundColor: '#4597cf', width: scale(150), height: vs(45), borderRadius: 50, alignSelf: 'center', marginBottom: -50, marginTop: 50, alignItems: "center", justifyContent: 'center' }}>

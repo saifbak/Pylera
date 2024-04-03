@@ -3,9 +3,10 @@ import { View, Text, Pressable, Image, TouchableOpacity } from 'react-native';
 import { COLORS, FONTS, ICONS, } from '../../../shared/utils/theme';
 import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import * as Progress from 'react-native-progress';
+import { useTranslation } from 'react-i18next';
 
 const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, timeLeft }) => {
-
+    const { t } = useTranslation();
     const [treatmentProgress, setTreatmentProgress] = useState(0);
     const [breakfastTime, setBreakfastTime] = useState(false);
     const [bedTimeSnack, setBedTimeSnack] = useState(false);
@@ -33,9 +34,9 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", }}><Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>Back</Text></Pressable>
+                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", }}><Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                     <View style={[styles.block, { backgroundColor: '#ebf1fa' }]}>
-                        <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.secondary, fontFamily: FONTS.semibold, }}>Your treatment plan progress!</Text>
+                        <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.secondary, fontFamily: FONTS.semibold, }}>{t('your-treatment')}</Text>
                         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                             <View style={{ width: 70, height: 70, borderRadius: 100, backgroundColor: COLORS.white, alignItems: "center", justifyContent: "center" }}>
                                 <Progress.Circle progress={treatmentProgress / 10} borderWidth={1} size={70} borderColor={String(COLORS.white)} thickness={7} showsText textStyle={{ fontFamily: FONTS.bold, color: String(COLORS.secondary), fontSize: vs(16) }} color={String(COLORS.primary)} />
@@ -43,7 +44,7 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                         </View>
                     </View>
                     <View style={[styles.block, { backgroundColor: COLORS.secondary }]}>
-                        <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.white, fontFamily: FONTS.semibold }}>The next dose will be in:</Text>
+                        <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.white, fontFamily: FONTS.semibold }}>{t('next-dose')}</Text>
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", flex: 1, }}>
                             <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: vs(28) }}>{hours.toString().padStart(2, '0')}</Text>
                             <View style={{ marginHorizontal: scale(8), flexDirection: "column", }} >
@@ -59,7 +60,7 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('Track')} style={[styles.block, { backgroundColor: COLORS.primary }]}>
-                        <Text style={{ fontSize: vs(16), color: COLORS.secondary, fontFamily: FONTS.semibold, }}>Day progressed :</Text>
+                        <Text style={{ fontSize: vs(16), color: COLORS.secondary, fontFamily: FONTS.semibold, }}>{t('day-progressed')}</Text>
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", flex: 1, }}>
                             <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: vs(32) }}>00</Text>
                             <View style={{ width: 2, height: vs(47), backgroundColor: COLORS.black, marginHorizontal: scale(8) }} />
@@ -68,7 +69,7 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                     </TouchableOpacity>
                     <View style={{ backgroundColor: COLORS.white, }}>
                         <View style={{ flexDirection: "row" }}>
-                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(16) }}>Today's PYLERA</Text>
+                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(16) }}>{t('todays')}</Text>
                             <Text style={{
                                 fontFamily: FONTS.semibold, color: COLORS.primary,
                                 fontSize: vs(17),
@@ -82,14 +83,14 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
-                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>Breakfast Time</Text>
+                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>{t('bf-time')}</Text>
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: "flex-end" }}>
                                 <TouchableOpacity style={{ backgroundColor: !breakfastTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={() => setBreakfastTime(!breakfastTime)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{breakfastTime ? 'Not Taken' : 'Taken'}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{breakfastTime ? t('taken') : t('not-taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -97,14 +98,14 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.lunch_time} />
-                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>Lunch Time</Text>
+                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>{t('l-time')}</Text>
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: "flex-end" }}>
                                 <TouchableOpacity style={{ backgroundColor: !lunchTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={() => setLunchTime(!lunchTime)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{lunchTime ? 'Not Taken' : 'Taken'}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{lunchTime ? t('taken') : t('not-taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -112,14 +113,14 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
-                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>Dinner Time</Text>
+                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>{t('d-time')}</Text>
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: "flex-end" }}>
                                 <TouchableOpacity style={{ backgroundColor: !dinnerTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={() => setDinnerTime(!dinnerTime)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{dinnerTime ? 'Not Taken' : 'Taken'}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{dinnerTime ? t('taken') : t('not-taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -127,7 +128,7 @@ const Dose: React.FC<{ navigation: any, timeLeft: number }> = ({ navigation, tim
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
-                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>Bed Time Snack</Text>
+                                    <Text style={{ fontSize: vs(13), fontFamily: FONTS.bold, color: COLORS.secondary, marginLeft: scale(8) }}>{t('bd-time')}</Text>
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: "flex-end" }}>
