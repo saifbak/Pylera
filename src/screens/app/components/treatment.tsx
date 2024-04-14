@@ -9,6 +9,7 @@ import ReactNativeModal from 'react-native-modal';
 import AlertModal from '../../../shared/components/AlertModal';
 import useTreatment from '../hooks/useTreatment';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 const detailsContent = [
     'Detail 1',
     'Detail 2',
@@ -157,17 +158,17 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <AlertModal isVisible={visible} setVisible={setVisible} title={t('alert')} text={t('alart-para-1')} onPress={handleModalPressed} />
-            <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={'Alert'} text={t('alart-para-2')} onPress={handleProceedModalPressed} />
+            <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={t('alert')} text={t('alart-para-2')} onPress={handleProceedModalPressed} />
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 {proceed === false ?
                     <>
                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, }}>
-                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                             <Image source={ICONS.caution} style={{ width: scale(280), height: vs(160), resizeMode: "contain", alignSelf: "center", marginVertical: vs(20) }} />
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('agreement2')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === 'ar' ? 'right' : "justify" }}>{t('agreement2')}</Text>
                             </View>
-                            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 30 }}>
+                            <View style={{ flexDirection: i18next.language === 'ar' ? 'row-reverse' : "row", alignItems: "center", marginTop: 30 }}>
                                 <CheckBox
                                     disabled={false}
                                     value={toggleCheckBox}
@@ -179,25 +180,25 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         true: COLORS.primary
                                     }}
                                 />
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('agree')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('agree')}</Text>
                             </View>
                             <View style={{ width: scale(120), alignSelf: "center", alignItems: "center", marginTop: vs(50) }}>
                                 <TouchableOpacity
                                     disabled={!toggleCheckBox}
                                     style={{ backgroundColor: toggleCheckBox === true ? COLORS.primary : COLORS.gray, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={handleModal}>
-                                    <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{t('proceed')} </Text>
+                                    <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('proceed')} </Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </>
                     : proceed === true && confirmation === false ?
                         <>
-                            <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, }}>
-                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>Back</Text></Pressable>
+                            <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, alignItems: i18next.language === 'ar' ? 'flex-end' : 'flex-start' }}>
+                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                                 <Image source={ICONS.caution} style={{ width: scale(180), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
-                                <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.secondary, fontSize: vs(13) }}>{t('medical-heading')}</Text>
+                                <View style={{ flexDirection: "row", marginTop: 5, marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
+                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(13), }}>{t('medical-heading')}</Text>
                                     <Text style={{
                                         fontFamily: FONTS.h1, color: COLORS.secondary,
                                         fontSize: vs(8),
@@ -207,18 +208,18 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     }}>20
                                     </Text>
                                 </View>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-1')}</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-2')}</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-3')}</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-4')}</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-5')}</Text>
-                                <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: "justify" }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-6')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-1')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-2')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-3')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-4')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-5')}</Text>
+                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-6')}</Text>
                                 <View style={{ width: scale(120), marginTop: vs(40), alignSelf: "center", alignItems: "center" }}>
                                     <TouchableOpacity
                                         // disabled={!toggleCheckBox}
                                         style={{ backgroundColor: COLORS.primary, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                         onPress={() => setConfirmation(true)}  >
-                                        <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: FONTS.bold }}>{t('proceed')}</Text>
+                                        <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('proceed')}</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -232,16 +233,15 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 showsPagination={false}
                                 onIndexChanged={(index) => setCurrentIndex(index)}>
                                 {detailsContent.map((detail, index) => (
-                                    <View key={index} style={{ flex: 1, }}>
+                                    <View key={index.toString()} style={{ flex: 1, }}>
                                         {index === 0 ?
                                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
+                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
                                                 <View style={{ backgroundColor: COLORS.yellow, borderColor: COLORS.secondary, borderWidth: 2, height: vs(450), width: '90%', alignSelf: "center" }}>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
 
                                                     </View>
                                                     <View style={{ flex: 2.3, backgroundColor: COLORS.primary }}>
-
                                                     </View>
                                                     <Image source={ICONS.family} style={{ position: "absolute", top: 45, width: scale(250), height: 210, resizeMode: "contain", alignSelf: "center" }} />
                                                     <Image source={ICONS.playbutton} style={{ position: "absolute", top: 220, width: scale(70), height: 100, resizeMode: "contain", alignSelf: "center" }} />
@@ -253,8 +253,8 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         <Image source={ICONS.date} style={{ width: scale(300), height: vs(250), resizeMode: "contain", marginTop: -50 }} />
                                                     </View>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                        <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('date-time-para')}</Text>
-                                                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8, marginBottom: i18next.language === 'ar' ? 5 : 0 }}>{t('date-time-para')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
                                                         <Text style={styles.month}>{`${currentMonth}, ${currentYear}`}</Text>
                                                         <FlatList
                                                             contentContainerStyle={{ height: vs(55), }}
@@ -264,6 +264,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             renderItem={({ item, index }) => {
                                                                 return (
                                                                     <TouchableOpacity
+                                                                        key={index.toString()}
                                                                         onPress={() => setSelectDate(item?.date)}
                                                                         style={[styles.dateView, { backgroundColor: item?.date === selectDate ? COLORS.primary : COLORS.white }]}
                                                                     >
@@ -282,6 +283,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             renderItem={({ item, index }) => {
                                                                 return (
                                                                     <TouchableOpacity
+                                                                        key={index.toString()}
                                                                         onPress={() => setSelectTime(item?.formattedTime)}
                                                                         style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectTime ? COLORS.secondary : COLORS.white }]}
                                                                     >
@@ -292,7 +294,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             horizontal
                                                         />
                                                         <View style={{
-                                                            flexDirection: "row",
+                                                            flexDirection: i18next.language === 'ar' ? 'row-reverse' : "row",
                                                             alignItems: "center",
                                                             justifyContent: "center",
                                                             bottom: vs(50)
@@ -308,7 +310,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     true: COLORS.primary
                                                                 }}
                                                             />
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('have-not')}.</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), }}>{t('have-not')}.</Text>
                                                         </View>
                                                     </View>
                                                 </>
@@ -319,7 +321,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         </View>
                                                         <View style={{ flex: 2, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                             {/* <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>To set your treatment plan, please enter the following data, and the application will send you notification reminders to take your dose</Text> */}
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginBottom: -5 }}>{t('set-meal')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('set-meal')}</Text>
                                                             <View>
                                                                 <Text style={styles.Headings}>{t('breakfast-time')}</Text>
                                                                 <FlatList
@@ -329,6 +331,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     renderItem={({ item, index }) => {
                                                                         return (
                                                                             <TouchableOpacity
+                                                                                key={index.toString()}
                                                                                 onPress={() => setSelectBreakFastTime(item?.formattedTime)}
                                                                                 style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectBreakFastTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
@@ -348,6 +351,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     renderItem={({ item, index }) => {
                                                                         return (
                                                                             <TouchableOpacity
+                                                                                key={index.toString()}
                                                                                 onPress={() => setSelectLunchTime(item?.formattedTime)}
                                                                                 style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectLunchTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
@@ -367,6 +371,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     renderItem={({ item, index }) => {
                                                                         return (
                                                                             <TouchableOpacity
+                                                                                key={index.toString()}
                                                                                 onPress={() => setSelectDinnerTime(item?.formattedTime)}
                                                                                 style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectDinnerTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
@@ -386,6 +391,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     renderItem={({ item, index }) => {
                                                                         return (
                                                                             <TouchableOpacity
+                                                                                key={index.toString()}
                                                                                 onPress={() => setSelectBedTimeSnackTime(item?.formattedTime)}
                                                                                 style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectBedTimeSnackTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
@@ -422,8 +428,8 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>{t('administrator')}</Text>
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? -0 : -8 }}>{t('administrator')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
                                                             <View style={styles.table}>
                                                                 <View style={styles.row}>
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>{t('table-heading-1')}</Text>
@@ -451,9 +457,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     <Text style={styles.cell}>0</Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
-                                                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: 5 }}>{t('missed-dose-heading')}</Text>
-                                                            <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
                                                         </View>
                                                         : null
                                         }
@@ -464,9 +470,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <TouchableOpacity style={{ backgroundColor: currentIndex === detailsContent.length - 1 ? '#b0120f' : COLORS.primary, width: currentIndex === detailsContent.length - 1 ? scale(120) : scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
                                     onPress={currentIndex === 2 ? handleProceedModal : handleNext}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: vs(13), fontFamily: FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('reset-mealtimes') : currentIndex === 2 ? t("start") : t('next')} </Text>
+                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(10) : vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('reset-mealtimes') : currentIndex === 2 ? t("start") : t('next')} </Text>
                                 </TouchableOpacity>
-                                <Text style={{ color: COLORS.secondary, fontFamily: FONTS.semibold, fontSize: vs(10), textAlign: 'center' }}>{t('disclaimer-n-references')}</Text>
+                                <Text style={{ color: COLORS.secondary, fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t('disclaimer-n-references')}</Text>
                             </View></>
                 }
             </View >
@@ -480,14 +486,14 @@ const styles = ScaledSheet.create({
         marginTop: '12@vs'
     },
     row: {
-        flexDirection: 'row',
+        flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row',
         alignItems: "center",
     },
     cell: {
         flex: 1,
         padding: '2@vs',
         textAlign: 'center',
-        fontFamily: FONTS.bold,
+        fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold,
         fontSize: '8@vs',
         color: COLORS.secondary,
     },
@@ -510,10 +516,10 @@ const styles = ScaledSheet.create({
         marginVertical: 10
     },
     Headings: {
-        fontFamily: FONTS.bold,
+        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
         color: COLORS.primary,
         fontSize: vs(15),
-        textAlign: "left",
+        textAlign: i18next.language === 'ar' ? 'right' : "left",
         marginVertical: 10
     },
     day: {

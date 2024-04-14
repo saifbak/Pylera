@@ -5,8 +5,9 @@ import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import * as Progress from 'react-native-progress';
 import CheckBox from '@react-native-community/checkbox';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
+const Track: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     const { t } = useTranslation();
 
@@ -28,41 +29,41 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                 <View style={{ flex: .6, paddingHorizontal: 20, alignItems: "center", justifyContent: "center" }}>
                     <Image source={ICONS.finish} style={{ right: scale(-65), width: scale(225), height: scale(225), resizeMode: "contain", marginTop: vs(-25) }} />
                     <View style={{ position: "absolute", bottom: scale(5), left: scale(30) }}>
-                        <Text style={{ fontFamily: FONTS.medium, color: COLORS.white, fontSize: vs(35), textAlign: "justify", marginBottom: scale(-16) }}>{t('well-done')}</Text>
-                        <Text style={{ fontFamily: FONTS.medium, color: COLORS.white, fontSize: vs(12), textAlign: "justify", }}>{t('youve-reached')}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium, color: COLORS.white, fontSize: vs(35), textAlign: "justify", marginBottom: i18next.language === "ar" ? vs(-10) : vs(-16) }}>{t('well-done')}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium, color: COLORS.white, fontSize: vs(12), textAlign: "justify", }}>{t('youve-reached')}</Text>
                     </View>
                 </View>
                 <View style={{ flex: 1.5, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
-                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", }}><Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", }}><Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                     <View style={{ marginVertical: vs(5), paddingHorizontal: scale(10) }}>
-                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('dose-in-time')}</Text>
-                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${doseInTime}/40 ${t('time')}`}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('dose-in-time')}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${doseInTime}/40 ${t('time')}`}</Text>
                         <Progress.Bar unfilledColor="white" progress={doseInTime / 10} borderWidth={1} width={335} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={String(COLORS.primary)} />
                     </View>
                     <View style={{ marginVertical: vs(5), paddingHorizontal: scale(10) }}>
-                        <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('missing-doses')}</Text>
-                        <Text style={{ fontFamily: FONTS.bold, color: "#de8545", fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${missingInTime}/40 ${t('time')}`}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('missing-doses')}</Text>
+                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: "#de8545", fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${missingInTime}/40 ${t('time')}`}</Text>
                         <Progress.Bar unfilledColor="white" progress={missingInTime / 10} borderWidth={1} width={335} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={"#de8545"} />
                     </View>
                     <View style={{ backgroundColor: '#efefef', flex: 1, borderRadius: 40, marginTop: vs(15), justifyContent: "center", paddingLeft: scale(15) }}>
                         <View style={{ marginVertical: vs(8) }}>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t("bf-doses")}</Text>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${breakfastDose}/10 ${t('time')}`}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t("bf-doses")}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${breakfastDose}/10 ${t('time')}`}</Text>
                             <Progress.Bar unfilledColor="white" progress={breakfastDose / 10} borderWidth={1} width={320} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={String(COLORS.secondary)} />
                         </View>
                         <View style={{ marginVertical: vs(8) }}>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('lunch-doses')}</Text>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${lunchDose}/10 ${t('time')}`}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('lunch-doses')}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${lunchDose}/10 ${t('time')}`}</Text>
                             <Progress.Bar unfilledColor="white" progress={lunchDose / 10} borderWidth={1} width={320} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={String(COLORS.secondary)} />
                         </View>
                         <View style={{ marginVertical: vs(8) }}>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('dinner-doses')}</Text>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${dinnerDose}/10 ${t('time')}`}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('dinner-doses')}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${dinnerDose}/10 ${t('time')}`}</Text>
                             <Progress.Bar unfilledColor="white" progress={dinnerDose / 10} borderWidth={1} width={320} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={String(COLORS.secondary)} />
                         </View>
                         <View style={{ marginVertical: vs(8) }}>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('bed-time-doses')}</Text>
-                            <Text style={{ fontFamily: FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{`${bedTimeDose}/10 ${t('time')}`}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: "justify", marginTop: vs(-8) }}>{t('bed-time-doses')}</Text>
+                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13), textAlign: "justify", marginTop: i18next.language === "ar" ? vs(-0) : vs(-8) }}>{`${bedTimeDose}/10 ${t('time')}`}</Text>
                             <Progress.Bar unfilledColor="white" progress={bedTimeDose / 10} borderWidth={1} width={320} borderRadius={2} height={5} borderColor={String(COLORS.acrylic)} color={String(COLORS.secondary)} />
                         </View>
                     </View>
@@ -97,4 +98,4 @@ const styles = ScaledSheet.create({
 
 })
 
-export default Dose;
+export default Track;

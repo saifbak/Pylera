@@ -6,6 +6,7 @@ import Onboarding from '../screens/boarding/components/onboarding';
 import GetStarted from '../screens/boarding/components/getStarted';
 import Splash from '../screens/boarding/components/splash';
 import BottomTabs from './bottomTab';
+import References from '../screens/app/components/references';
 
 export type AppStackParams = {
     App: undefined;
@@ -14,6 +15,7 @@ export type AppStackParams = {
     Treatment: undefined;
     Medication: undefined;
     DoseScreens: undefined;
+    References: undefined;
 }
 
 const horizontalAnimation = {
@@ -42,6 +44,7 @@ const AppScreens = () => {
             screenOptions={horizontalAnimation}
         >
             <AppStackScreens.Screen name="App" component={BottomTabs} />
+            <AppStackScreens.Screen name="References" component={References} />
         </AppStackScreens.Navigator>
     )
 }

@@ -47,6 +47,7 @@ function MyTabBar({ state, descriptors, navigation }: any) {
 
                 return (
                     <TouchableOpacity
+                        key={index.toString()}
                         activeOpacity={0.8}
                         accessibilityRole="button"
                         accessibilityState={isFocused ? { selected: true } : {}}

@@ -341,6 +341,7 @@ export interface ThemeIcons {
     playbutton: ImageSourcePropType;
     lunch_time: ImageSourcePropType;
     breakfast_time: ImageSourcePropType;
+    cross: ImageSourcePropType;
     //   plus: ImageSourcePropType;
     //   minus: ImageSourcePropType;
     //   cart_plus: ImageSourcePropType;

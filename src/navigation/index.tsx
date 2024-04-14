@@ -42,16 +42,6 @@ export default () => {
     useEffect(() => {
 
         // AsyncStorage.clear();
-        // AsyncStorage.getItem('@onboarding').then((value: any) => {
-        //     setIsLoading(true);
-        //     if (value) {
-        //         // console.log('onboarding', value)
-        //         setOnboarding(value);
-        //     }
-        //     setTimeout(() => {
-        //         setIsLoading(false);
-        //     }, 3000);
-        // });
 
         AsyncStorage.multiGet(['@onboarding', '@selectedLanguage']).then((values) => {
             const onboardingValue = values[0][1];

@@ -1,7 +1,9 @@
 {
     "start-now":"Start Now",
+    "start":"Start",
     "skip":"Skip",
     "next":"Next",
+    "ok":"OK",
     "your-recovery-portal": "Your Recovery Portal",
     "welcome-to-eradicate": "Welcome to Eradicate, your recovery partner",
     "onboard-heading-1":"All pills on time",
@@ -70,7 +72,7 @@
     "did-you-know":"Did you know?",
     "did-you-know-h1":"It is the most common chronic bacterial infection in humans.",
     "did-you-know-h2":"H. pylori is the leading known risk factor for peptic and gastric ulcers.",
-    "did-you-know-h3":"IH. pylori has been classified as type I (definite) cause of gastric cancer since 1994.",
+    "did-you-know-h3":"H. pylori has been classified as type I (definite) cause of gastric cancer since 1994.",
     "did-you-know-h4":"The morbidity of H. pylori infection can be very high.",
     "did-you-know-h5":"Infection appears to be approximately two to three times higher in blacks and Hispanics compared to the white population.",
     "go-back":"Go Back",

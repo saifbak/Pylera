@@ -5,6 +5,8 @@ import { NavigationState, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScaledSheet, vs } from 'react-native-size-matters';
 import { COLORS, FONTS } from '../../utils/theme';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 
 type AlertModalProps = {
@@ -24,6 +26,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
     onPress,
 }: AlertModalProps) => {
 
+    const { t } = useTranslation()
+
     return (
         <View>
             <ReactNativeModal style={styles.container} isVisible={isVisible} onBackdropPress={() => setVisible(false)}>
@@ -35,9 +39,9 @@ const AlertModal: React.FC<AlertModalProps> = ({
                         </View>
                     }
                     <TouchableOpacity
-                        style={{ alignSelf: "flex-end" }}
+                        style={{ alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
                         onPress={onPress}>
-                        <Text style={{ color: COLORS.secondary, fontSize: vs(12), fontFamily: FONTS.bold }}>{'OK'} </Text>
+                        <Text style={{ color: COLORS.secondary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('ok')} </Text>
                     </TouchableOpacity>
                 </View>
             </ReactNativeModal>
@@ -58,12 +62,12 @@ const styles = ScaledSheet.create({
         width: '280@s',
         borderRadius: '30@s',
         padding: '15@s',
-        alignItems: "flex-start",
+        alignItems: i18next.language === 'ar' ? 'flex-end' : "flex-start",
         justifyContent: "space-between",
     },
     title: {
-        textAlign: 'center',
-        fontFamily: FONTS.semibold,
+        textAlign: i18next.language === 'ar' ? 'right' : 'center',
+        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold,
         fontSize: '15@s',
         color: COLORS.danger
     },
@@ -71,9 +75,9 @@ const styles = ScaledSheet.create({
         marginVertical: '8@vs',
     },
     text: {
-        fontFamily: FONTS.medium,
+        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.medium,
         fontSize: '12@s',
         color: COLORS.secondary,
-        textAlign: 'left',
+        textAlign: i18next.language === 'ar' ? 'right' : 'left',
     },
 })

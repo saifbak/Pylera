@@ -18,6 +18,7 @@ const GetStarted = () => {
         checkValue,
         setCheckValue,
         t,
+        i18n,
         changeLanguageSelect
     } = useChangeLanguage();
 
@@ -42,7 +43,7 @@ const GetStarted = () => {
                     <TouchableOpacity
                         onPress={getStarted}
                         style={{ backgroundColor: '#4597cf', width: scale(150), height: vs(45), borderRadius: 50, alignSelf: 'center', marginBottom: -50, marginTop: 50, alignItems: "center", justifyContent: 'center' }}>
-                        <Text style={{ fontFamily: FONTS.bold, color: 'white', fontSize: vs(16) }}>Start Now</Text>
+                        <Text style={{ fontFamily: i18n.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: 'white', fontSize: vs(16) }}>{t('start-now')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
