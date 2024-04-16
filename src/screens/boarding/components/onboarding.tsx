@@ -43,7 +43,7 @@ const Onboarding = ({ navigation }: any) => {
                     showsPagination={true}
                     onIndexChanged={(index) => setCurrentIndex(index)}
                     pagingEnabled
-                    paginationStyle={{ bottom: vs(600) }}
+                    paginationStyle={{ top: vs(-570) }}
                     activeDotStyle={{ width: scale(40), height: vs(6) }}
                     activeDotColor={String(COLORS.gray)}
                     dotColor={String(COLORS.gray)}

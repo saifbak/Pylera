@@ -31,17 +31,23 @@ const AlertModal: React.FC<AlertModalProps> = ({
     return (
         <View>
             <ReactNativeModal style={styles.container} isVisible={isVisible} onBackdropPress={() => setVisible(false)}>
-                <View style={styles.wrapper} >
-                    {title && <Text style={styles.title}>{title}</Text>}
+                <View style={[styles.wrapper, { alignItems: i18next.language === 'ar' ? 'flex-end' : "flex-start", }]} >
+                    {title && <Text style={[styles.title, {
+                        textAlign: i18next.language === 'ar' ? 'right' : 'center',
+                        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold,
+                    }]}>{title}</Text>}
                     {text &&
                         <View style={styles.textView}>
-                            <Text style={styles.text}>{text}</Text>
+                            <Text style={[styles.text, {
+                                fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.medium,
+                                textAlign: i18next.language === 'ar' ? 'right' : 'left',
+                            }]}>{text}</Text>
                         </View>
                     }
                     <TouchableOpacity
                         style={{ alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
                         onPress={onPress}>
-                        <Text style={{ color: COLORS.secondary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('ok')} </Text>
+                        <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('ok')} </Text>
                     </TouchableOpacity>
                 </View>
             </ReactNativeModal>
@@ -62,12 +68,11 @@ const styles = ScaledSheet.create({
         width: '280@s',
         borderRadius: '30@s',
         padding: '15@s',
-        alignItems: i18next.language === 'ar' ? 'flex-end' : "flex-start",
+
         justifyContent: "space-between",
     },
     title: {
-        textAlign: i18next.language === 'ar' ? 'right' : 'center',
-        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold,
+
         fontSize: '15@s',
         color: COLORS.danger
     },
@@ -75,9 +80,8 @@ const styles = ScaledSheet.create({
         marginVertical: '8@vs',
     },
     text: {
-        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.medium,
-        fontSize: '12@s',
+
         color: COLORS.secondary,
-        textAlign: i18next.language === 'ar' ? 'right' : 'left',
+        fontSize: '12@s',
     },
 })

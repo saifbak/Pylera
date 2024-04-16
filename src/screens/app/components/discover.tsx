@@ -40,6 +40,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                 <Swiper
                     loop={false}
                     index={currentIndex}
+                    scrollEnabled={false}
                     showsPagination={true}
                     onIndexChanged={(index) => setCurrentIndex(index)}
                     pagingEnabled
@@ -61,9 +62,9 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         </Text>
                                     </View>
                                     <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginBottom: 10 }}>{t('discover-para')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('discover-li-1')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('discover-li-2')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify" }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t("discover-li-3")}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-1')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-2')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify" }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t("discover-li-3")}</Text>
                                 </View>
                                 : index === 1 ?
                                     <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>

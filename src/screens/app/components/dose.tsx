@@ -5,38 +5,41 @@ import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import * as Progress from 'react-native-progress';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import useDose from '../hooks/useDose';
+type MealTime = {
+    label: string;
+    time: Date;
+};
 
+type MealTimes = {
+    breakfast: MealTime;
+    lunch: MealTime;
+    dinner: MealTime;
+    bedTimeSnack: MealTime;
+};
 const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
     const { t } = useTranslation();
     const [treatmentProgress, setTreatmentProgress] = useState(0);
-    const [breakfastTime, setBreakfastTime] = useState(false);
-    const [bedTimeSnack, setBedTimeSnack] = useState(false);
-    const [dinnerTime, setDinnerTime] = useState(false);
-    const [lunchTime, setLunchTime] = useState(false);
+    const [breakfastTime, setBreakfastTime] = useState(0);
+    const [bedTimeSnack, setBedTimeSnack] = useState(0);
+    const [dinnerTime, setDinnerTime] = useState(0);
+    const [lunchTime, setLunchTime] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [hours, setHours] = useState(0);
 
+    const { fetchData, treatmentData } = useDose()
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            const totalSeconds = 0;
-            setHours(Math.floor(totalSeconds / 3600));
-            setMinutes(Math.floor((totalSeconds % 3600) / 60));
-            setSeconds(totalSeconds % 60);
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
+        fetchData()
     }, []);
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", }}><Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
-                    <View style={[styles.block, { backgroundColor: '#ebf1fa' }]}>
+                    <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", }}><Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                    <View style={[styles.block, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", backgroundColor: '#ebf1fa' }]}>
                         <Text style={{ fontSize: i18next.language === "ar" ? vs(14) : vs(16), width: 130, height: vs(55), color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, }}>{t('your-treatment')}</Text>
                         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                             <View style={{ width: 70, height: 70, borderRadius: 100, backgroundColor: COLORS.white, alignItems: "center", justifyContent: "center" }}>
@@ -44,7 +47,7 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                    <View style={[styles.block, { backgroundColor: COLORS.secondary }]}>
+                    <View style={[styles.block, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", backgroundColor: COLORS.secondary }]}>
                         <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.white, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold }}>{t('next-dose')}</Text>
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", flex: 1, }}>
                             <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: vs(28) }}>{hours.toString().padStart(2, '0')}</Text>
@@ -60,7 +63,7 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                             <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: vs(28) }}>{seconds.toString().padStart(2, '0')}</Text>
                         </View>
                     </View>
-                    <TouchableOpacity onPress={() => navigation.navigate('Track')} style={[styles.block, { backgroundColor: COLORS.primary }]}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Track')} style={[styles.block, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", backgroundColor: COLORS.primary }]}>
                         <Text style={{ fontSize: vs(16), color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, }}>{t('day-progressed')}</Text>
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", flex: 1, }}>
                             <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: vs(32) }}>00</Text>
@@ -71,16 +74,8 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                     <View style={{ backgroundColor: COLORS.white, }}>
                         <View style={{ flexDirection: "row" }}>
                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(16), textAlign: i18next.language === "ar" ? 'right' : 'left' }}>{t('todays')}</Text>
-                            <Text style={{
-                                fontFamily: FONTS.semibold, color: COLORS.primary,
-                                fontSize: vs(17),
-                                lineHeight: 40,
-                                textAlignVertical: 'top',
-                            }}>®
-                            </Text>
-                            <Text style={{ fontFamily: FONTS.semibold, color: COLORS.primary, fontSize: vs(16) }}>intake:</Text>
                         </View>
-                        <View style={styles.secondaryblock}>
+                        <View style={[styles.secondaryblock, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", }]}>
                             <View style={{ flex: 1, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
@@ -88,14 +83,14 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
-                                <TouchableOpacity style={{ backgroundColor: !breakfastTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                                    onPress={() => setBreakfastTime(!breakfastTime)}
+                                <TouchableOpacity style={{ backgroundColor: breakfastTime === 2 ? COLORS.primary : breakfastTime === 1 ? '#b0120f' : breakfastTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
+                                    onPress={() => setBreakfastTime(breakfastTime + 1)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{breakfastTime ? t('taken') : t('not-taken')}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{breakfastTime === 1 ? t('not-taken') : breakfastTime === 2 ? t('taken') : breakfastTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View style={styles.secondaryblock}>
+                        <View style={[styles.secondaryblock, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", }]}>
                             <View style={{ flex: 1, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.lunch_time} />
@@ -103,14 +98,14 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
-                                <TouchableOpacity style={{ backgroundColor: !lunchTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                                    onPress={() => setLunchTime(!lunchTime)}
+                                <TouchableOpacity style={{ backgroundColor: lunchTime === 2 ? COLORS.primary : lunchTime === 1 ? '#b0120f' : lunchTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
+                                    onPress={() => setLunchTime(lunchTime + 1)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{lunchTime ? t('taken') : t('not-taken')}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{lunchTime === 1 ? t('not-taken') : lunchTime === 2 ? t('taken') : lunchTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View style={styles.secondaryblock}>
+                        <View style={[styles.secondaryblock, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", }]}>
                             <View style={{ flex: 1, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
@@ -118,14 +113,14 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
-                                <TouchableOpacity style={{ backgroundColor: !dinnerTime ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                                    onPress={() => setDinnerTime(!dinnerTime)}
+                                <TouchableOpacity style={{ backgroundColor: dinnerTime === 2 ? COLORS.primary : dinnerTime === 1 ? '#b0120f' : dinnerTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
+                                    onPress={() => setDinnerTime(dinnerTime + 1)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{dinnerTime ? t('taken') : t('not-taken')}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{dinnerTime === 1 ? t('not-taken') : dinnerTime === 2 ? t('taken') : dinnerTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View style={styles.secondaryblock}>
+                        <View style={[styles.secondaryblock, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", }]}>
                             <View style={{ flex: 1, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View style={{ flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={ICONS.breakfast_time} />
@@ -133,10 +128,10 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 </View>
                             </View>
                             <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
-                                <TouchableOpacity style={{ backgroundColor: !bedTimeSnack ? COLORS.primary : '#b0120f', width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                                    onPress={() => setBedTimeSnack(!bedTimeSnack)}
+                                <TouchableOpacity style={{ backgroundColor: bedTimeSnack === 2 ? COLORS.primary : bedTimeSnack === 1 ? '#b0120f' : bedTimeSnack === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
+                                    onPress={() => setBedTimeSnack(bedTimeSnack + 1)}
                                 >
-                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{bedTimeSnack ? t('taken') : t('not-taken')}</Text>
+                                    <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{bedTimeSnack === 1 ? t('not-taken') : bedTimeSnack === 2 ? t('taken') : bedTimeSnack === 0 ? t('wait-for-time') : t('taken')}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -150,7 +145,7 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
 
 const styles = ScaledSheet.create({
     block: {
-        flexDirection: i18next.language === "ar" ? 'row-reverse' : "row",
+
         paddingHorizontal: '20@s',
         width: '100%',
         height: '70@vs',
@@ -160,7 +155,7 @@ const styles = ScaledSheet.create({
         justifyContent: "space-between"
     },
     secondaryblock: {
-        flexDirection: i18next.language === "ar" ? 'row-reverse' : "row",
+
         paddingHorizontal: '10@s',
         width: '100%',
         height: '48@vs',

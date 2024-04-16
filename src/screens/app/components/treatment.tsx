@@ -1,6 +1,6 @@
 // screens/DetailsScreen.tsx
-import React, { useCallback, useState } from 'react';
-import { View, Text, Button, TouchableOpacity, Image, Pressable, FlatList } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { View, Text, Button, TouchableOpacity, Image, Pressable, FlatList, Alert } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { COLORS, FONTS, ICONS } from '../../../shared/utils/theme';
 import { ScaledSheet, scale, vs } from 'react-native-size-matters';
@@ -29,6 +29,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     const {
+        fetchData,
         selectDate,
         setSelectDate,
         selectTime,
@@ -40,51 +41,15 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
         selectDinnerTime,
         setSelectDinnerTime,
         selectBedTimeSnackTime,
-        setSelectBedTimeSnackTime
+        setSelectBedTimeSnackTime,
+        treatmentData,
+        setTreatmentData,
+        saveTreatmentData,
 
     } = useTreatment()
 
 
-    const handleNext = () => {
-        if (currentIndex < detailsContent.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        }
-        else {
-            navigation.navigate('Home');
-            setCurrentIndex(0);
-            setProceed(false)
-            setConfirmation(false)
-            setToggleCheckBox(false)
-            setToggleCheckBox2(false)
-            setSelectTime('')
-            setSelectDate(0)
-            setSelectBreakFastTime('')
-            setSelectLunchTime('')
-            setSelectDinnerTime('')
-            setSelectBedTimeSnackTime('')
-        }
-    };
 
-    const handleModal = useCallback(() => {
-        setVisible(true)
-    }, []);
-    const handleProceedModal = useCallback(() => {
-        setIsVisible(true)
-    }, []);
-
-    const handleGoBack = () => {
-        setCurrentIndex(0);
-        navigation.navigate('Home');
-    };
-    const handleModalPressed = useCallback(() => {
-        setVisible(false);
-        setProceed(true);
-    }, [visible]);
-
-    const handleProceedModalPressed = useCallback(() => {
-        setIsVisible(false);
-        handleNext()
-    }, [isVisible]);
 
     const monthNames: string[] = [
         'January', 'February', 'March', 'April',
@@ -154,7 +119,68 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     // Example usage:
     const clockArray = generate24HourClock();
-    console.log(clockArray);
+
+    const handleNext = () => {
+        if (currentIndex < detailsContent.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+        }
+        else {
+            navigation.navigate('Home');
+            setCurrentIndex(0);
+            setProceed(false)
+            setConfirmation(false)
+            setToggleCheckBox(false)
+            setToggleCheckBox2(false)
+            setSelectTime('')
+            setSelectDate(0)
+            setSelectBreakFastTime('')
+            setSelectLunchTime('')
+            setSelectDinnerTime('')
+            setSelectBedTimeSnackTime('')
+        }
+    };
+
+    const handleModal = useCallback(() => {
+        setVisible(true)
+    }, []);
+    const handleProceedModal = useCallback(() => {
+        setIsVisible(true)
+    }, []);
+
+    const handleGoBack = () => {
+        setCurrentIndex(0);
+        navigation.navigate('Home');
+    };
+    const handleModalPressed = useCallback(() => {
+        setVisible(false);
+        setProceed(true);
+    }, [visible]);
+
+    const handleProceedModalPressed = useCallback(() => {
+        handleSaveAllTimesToStore()
+        setIsVisible(false);
+        handleNext()
+    }, [isVisible]);
+
+    const handleSaveDateTime = useCallback(() => {
+        if (!treatmentData.selectDate && !treatmentData.selectTime) {
+            return Alert.alert('Please select date and time to proceed');
+        }
+        else {
+            return handleNext();
+        }
+    }, [treatmentData.selectDate, treatmentData.selectTime]);
+
+    const handleSaveAllTimesToStore = useCallback(() => {
+        const updatedTreatmentData = { ...treatmentData, ...treatmentData };
+        saveTreatmentData(updatedTreatmentData);
+
+    }, [selectBreakFastTime, selectLunchTime, selectDinnerTime, selectBedTimeSnackTime]);
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <AlertModal isVisible={visible} setVisible={setVisible} title={t('alert')} text={t('alart-para-1')} onPress={handleModalPressed} />
@@ -163,7 +189,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                 {proceed === false ?
                     <>
                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, }}>
-                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                            <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                             <Image source={ICONS.caution} style={{ width: scale(280), height: vs(160), resizeMode: "contain", alignSelf: "center", marginVertical: vs(20) }} />
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
                                 <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === 'ar' ? 'right' : "justify" }}>{t('agreement2')}</Text>
@@ -195,9 +221,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                     : proceed === true && confirmation === false ?
                         <>
                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, alignItems: i18next.language === 'ar' ? 'flex-end' : 'flex-start' }}>
-                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
-                                <Image source={ICONS.caution} style={{ width: scale(180), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
-                                <View style={{ flexDirection: "row", marginTop: 5, marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
+                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                                <Image source={ICONS.caution} style={{ width: scale(200), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
+                                <View style={{ flexDirection: "row", marginTop: vs(10), marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
                                     <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(13), }}>{t('medical-heading')}</Text>
                                     <Text style={{
                                         fontFamily: FONTS.h1, color: COLORS.secondary,
@@ -236,7 +262,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     <View key={index.toString()} style={{ flex: 1, }}>
                                         {index === 0 ?
                                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
+                                                <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginVertical: 5 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
                                                 <View style={{ backgroundColor: COLORS.yellow, borderColor: COLORS.secondary, borderWidth: 2, height: vs(450), width: '90%', alignSelf: "center" }}>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
 
@@ -265,11 +291,11 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 return (
                                                                     <TouchableOpacity
                                                                         key={index.toString()}
-                                                                        onPress={() => setSelectDate(item?.date)}
-                                                                        style={[styles.dateView, { backgroundColor: item?.date === selectDate ? COLORS.primary : COLORS.white }]}
+                                                                        onPress={() => { setSelectDate(item?.date), setTreatmentData({ ...treatmentData, selectDate: item?.date }) }}
+                                                                        style={[styles.dateView, { backgroundColor: item?.date === treatmentData.selectDate ? COLORS.primary : COLORS.white }]}
                                                                     >
-                                                                        <Text style={[styles.day, { color: item?.date === selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.day.slice(0, 3)}</Text>
-                                                                        <Text style={[styles.date, { color: item?.date === selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.date}</Text>
+                                                                        <Text style={[styles.day, { color: item?.date === treatmentData.selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.day.slice(0, 3)}</Text>
+                                                                        <Text style={[styles.date, { color: item?.date === treatmentData.selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.date}</Text>
                                                                     </TouchableOpacity>
                                                                 )
                                                             }}
@@ -284,10 +310,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 return (
                                                                     <TouchableOpacity
                                                                         key={index.toString()}
-                                                                        onPress={() => setSelectTime(item?.formattedTime)}
-                                                                        style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectTime ? COLORS.secondary : COLORS.white }]}
+                                                                        onPress={() => { setSelectTime(item?.formattedTime), setTreatmentData({ ...treatmentData, selectTime: item?.formattedTime }) }}
+                                                                        style={[styles.hoursView, { backgroundColor: item?.formattedTime === treatmentData.selectTime ? COLORS.secondary : COLORS.white }]}
                                                                     >
-                                                                        <Text style={[styles.hours, { color: item?.formattedTime === selectTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
+                                                                        <Text style={[styles.hours, { color: item?.formattedTime === treatmentData.selectTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
                                                                     </TouchableOpacity>
                                                                 )
                                                             }}
@@ -332,10 +358,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         return (
                                                                             <TouchableOpacity
                                                                                 key={index.toString()}
-                                                                                onPress={() => setSelectBreakFastTime(item?.formattedTime)}
-                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectBreakFastTime ? COLORS.secondary : COLORS.white }]}
+                                                                                onPress={() => { setSelectBreakFastTime(item?.formattedTime), setTreatmentData({ ...treatmentData, selectBreakFastTime: item?.formattedTime }) }}
+                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === treatmentData.selectBreakFastTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
-                                                                                <Text style={[styles.hours, { color: item?.formattedTime === selectBreakFastTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
+                                                                                <Text style={[styles.hours, { color: item?.formattedTime === treatmentData.selectBreakFastTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
                                                                             </TouchableOpacity>
                                                                         )
                                                                     }}
@@ -352,10 +378,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         return (
                                                                             <TouchableOpacity
                                                                                 key={index.toString()}
-                                                                                onPress={() => setSelectLunchTime(item?.formattedTime)}
-                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectLunchTime ? COLORS.secondary : COLORS.white }]}
+                                                                                onPress={() => { setSelectLunchTime(item?.formattedTime), setTreatmentData({ ...treatmentData, selectLunchTime: item?.formattedTime }) }}
+                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === treatmentData.selectLunchTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
-                                                                                <Text style={[styles.hours, { color: item?.formattedTime === selectLunchTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
+                                                                                <Text style={[styles.hours, { color: item?.formattedTime === treatmentData.selectLunchTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
                                                                             </TouchableOpacity>
                                                                         )
                                                                     }}
@@ -372,10 +398,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         return (
                                                                             <TouchableOpacity
                                                                                 key={index.toString()}
-                                                                                onPress={() => setSelectDinnerTime(item?.formattedTime)}
-                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectDinnerTime ? COLORS.secondary : COLORS.white }]}
+                                                                                onPress={() => { setSelectDinnerTime(item?.formattedTime), setTreatmentData({ ...treatmentData, selectDinnerTime: item?.formattedTime }) }}
+                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === treatmentData.selectDinnerTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
-                                                                                <Text style={[styles.hours, { color: item?.formattedTime === selectDinnerTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
+                                                                                <Text style={[styles.hours, { color: item?.formattedTime === treatmentData.selectDinnerTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
                                                                             </TouchableOpacity>
                                                                         )
                                                                     }}
@@ -392,10 +418,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         return (
                                                                             <TouchableOpacity
                                                                                 key={index.toString()}
-                                                                                onPress={() => setSelectBedTimeSnackTime(item?.formattedTime)}
-                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === selectBedTimeSnackTime ? COLORS.secondary : COLORS.white }]}
+                                                                                onPress={() => { setSelectBedTimeSnackTime(item?.formattedTime), setTreatmentData({ ...treatmentData, selectBedTimeSnackTime: item?.formattedTime }) }}
+                                                                                style={[styles.hoursView, { backgroundColor: item?.formattedTime === treatmentData.selectBedTimeSnackTime ? COLORS.secondary : COLORS.white }]}
                                                                             >
-                                                                                <Text style={[styles.hours, { color: item?.formattedTime === selectBedTimeSnackTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
+                                                                                <Text style={[styles.hours, { color: item?.formattedTime === treatmentData.selectBedTimeSnackTime ? COLORS.white : COLORS.borderColor }]}>{item?.formattedTime}</Text>
                                                                             </TouchableOpacity>
                                                                         )
                                                                     }}
@@ -468,7 +494,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                             </Swiper>
                             <View style={{ width: scale(120), position: "absolute", bottom: 10, alignSelf: "center", alignItems: "center" }}>
                                 <TouchableOpacity style={{ backgroundColor: currentIndex === detailsContent.length - 1 ? '#b0120f' : COLORS.primary, width: currentIndex === detailsContent.length - 1 ? scale(120) : scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                                    onPress={currentIndex === 2 ? handleProceedModal : handleNext}
+                                    onPress={currentIndex === 2 ? handleProceedModal : currentIndex === 1 ? handleSaveDateTime : handleNext}
                                 >
                                     <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(10) : vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('reset-mealtimes') : currentIndex === 2 ? t("start") : t('next')} </Text>
                                 </TouchableOpacity>
