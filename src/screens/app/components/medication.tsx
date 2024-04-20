@@ -343,7 +343,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-heading')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-heading')}</Text>
                                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8 }}>{t('contraindications-para')}</Text>
 
                                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-1')}</Text>

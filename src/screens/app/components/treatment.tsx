@@ -18,7 +18,7 @@ const detailsContent = [
 ];
 
 const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false);
     const [toggleCheckBox2, setToggleCheckBox2] = useState<boolean>(false);
@@ -47,8 +47,6 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
         saveTreatmentData,
 
     } = useTreatment()
-
-
 
 
     const monthNames: string[] = [
@@ -176,6 +174,8 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
         saveTreatmentData(updatedTreatmentData);
 
     }, [selectBreakFastTime, selectLunchTime, selectDinnerTime, selectBedTimeSnackTime]);
+
+    console.log(treatmentData);
 
     useEffect(() => {
         fetchData();
@@ -347,7 +347,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         </View>
                                                         <View style={{ flex: 2, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                             {/* <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>To set your treatment plan, please enter the following data, and the application will send you notification reminders to take your dose</Text> */}
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('set-meal')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "left", marginBottom: -5 }}>{t('set-meal')}</Text>
                                                             <View>
                                                                 <Text style={styles.Headings}>{t('breakfast-time')}</Text>
                                                                 <FlatList

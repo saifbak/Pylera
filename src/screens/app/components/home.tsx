@@ -20,7 +20,7 @@ const Home = () => {
                         <Image source={ICONS.logo} style={{ width: scale(110), height: vs(50), resizeMode: "contain" }} />
                     </View>
                     <View style={{ width: scale(180), paddingLeft: scale(25), marginTop: vs(-3), alignItems: i18next.language === "ar" ? 'flex-end' : "flex-start" }}>
-                        <Text style={{ color: COLORS.white, fontSize: vs(40), marginTop: i18next.language === "ar" ? 20 : 0, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal }}>{t("hello")}</Text>
+                        <Text style={{ color: COLORS.white, fontSize: vs(40), marginTop: i18next.language === "ar" ? 20 : 0, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t("hello")}</Text>
                         <Text style={{ color: COLORS.white, fontSize: vs(14), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, textAlign: i18next.language === "ar" ? 'right' : "left", marginTop: i18next.language === "ar" ? -5 : -15 }}>{t('home-para')}</Text>
                     </View>
                 </View>
@@ -32,7 +32,7 @@ const Home = () => {
                 </View>
             </View>
             <View style={{ flex: 1.1, backgroundColor: COLORS.white, borderRadius: 35, padding: 15, justifyContent: 'space-between', alignItems: "center" }}>
-                <View style={{ width: '75%', flexDirection: "row", alignItems: "center", justifyContent: "space-evenly" }}>
+                <View style={{ width: '75%', flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", alignItems: "center", justifyContent: "space-evenly" }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Discover')} activeOpacity={0.7} style={{ backgroundColor: COLORS.yellow, width: scale(110), height: vs(130), borderRadius: scale(22) }}>
                         <View style={{ flex: 1, alignItems: "flex-start", justifyContent: "space-evenly", padding: 15 }}>
                             <View>
@@ -56,7 +56,7 @@ const Home = () => {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ width: '75%', flexDirection: "row", alignItems: "center", justifyContent: "space-evenly" }}>
+                <View style={{ width: '75%', flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", alignItems: "center", justifyContent: "space-evenly" }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Treatment')} activeOpacity={0.7} style={{ backgroundColor: COLORS.peach, width: scale(110), height: vs(130), borderRadius: scale(22) }}>
                         <View style={{ flex: 1, alignItems: "flex-start", justifyContent: "space-evenly", padding: 15 }}>
                             <View>

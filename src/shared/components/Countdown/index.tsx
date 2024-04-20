@@ -38,7 +38,7 @@ const Countdown: React.FC<CountdownProps> = ({ savedTime }) => {
         }
     }, [isActive, savedTime]);
 
-    console.log('calculate time', calculateTimeDifference(savedTime));
+    // console.log('calculate time', calculateTimeDifference(savedTime));
 
     useEffect(() => {
         if (savedTime) {

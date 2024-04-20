@@ -44,14 +44,14 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                     showsPagination={true}
                     onIndexChanged={(index) => setCurrentIndex(index)}
                     pagingEnabled
-                    paginationStyle={{ bottom: 75 }}
+                    paginationStyle={{ bottom: 70 }}
                 >
                     {detailsContent.map((detail, index) => (
                         <View key={index} style={{ flex: 1, }}>
                             {index === 0 ?
                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                     <Image source={ICONS.infection} style={{ width: scale(250), height: vs(170), resizeMode: "contain", alignSelf: "center" }} />
-                                    <View style={{ flexDirection: "row" }}>
+                                    <View style={{ flexDirection: "row", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
                                         <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>Infection</Text>
                                         <Text style={{
                                             fontFamily: FONTS.h1, color: COLORS.appgreen,
@@ -61,10 +61,10 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         }}>1,2
                                         </Text>
                                     </View>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", marginBottom: 10 }}>{t('discover-para')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-1')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-2')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: "justify" }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t("discover-li-3")}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}>{t('discover-para')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-1')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-2')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left" }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t("discover-li-3")}</Text>
                                 </View>
                                 : index === 1 ?
                                     <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
@@ -80,13 +80,13 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                             </Text>
                                         </View>
                                         <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === "ar" ? "right" : 'justify', marginBottom: 10 }}>{t('symptoms-para')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-1')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-2')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-3')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-4')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-5')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-6')}</Text>
-                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>•</Text>{t('symptoms-li-7')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-1')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-2')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-3')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-4')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-5')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-6')}</Text>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('symptoms-li-7')}</Text>
                                     </View>
                                     : index === 2 ?
                                         <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
@@ -198,7 +198,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         }}>16-19
                                                         </Text>
                                                     </View>
-                                                    <View style={{ flex: .7, flexDirection: "row", justifyContent: "space-between" }}>
+                                                    <View style={{ flex: .7, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>
                                                         <View style={{ width: scale(103), height: vs(100), backgroundColor: COLORS.secondary, padding: 5, alignItems: i18next.language === "ar" ? "flex-end" : "flex-start", justifyContent: "center", borderRadius: 12, }}>
                                                             <View style={{ flex: .7 }}>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.white, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", }}>{t('did-you-know')}</Text>
@@ -224,7 +224,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             </View>
                                                         </View>
                                                     </View>
-                                                    <View style={{ flex: 1.3, flexDirection: "row", justifyContent: "space-between" }}>
+                                                    <View style={{ flex: 1.3, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>
                                                         <View style={{ width: scale(103), height: vs(100), backgroundColor: COLORS.primary, padding: 5, alignItems: i18next.language === "ar" ? "flex-end" : "flex-start", justifyContent: "center", borderRadius: 12, }}>
                                                             <View style={{ flex: .7 }}>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.white, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", }}>{t('did-you-know')}</Text>

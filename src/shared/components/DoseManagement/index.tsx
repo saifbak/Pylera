@@ -106,10 +106,10 @@ type TrackerProps = {
     handleDoseCompletion: (day: number, dose: keyof MedicineDose) => void;
     setSavedTime: (time: string) => void;
     treatmentData: ITreatmentData;
+    setNotifications: (reminder: string, date: any) => void;
 }
 
-const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreakfastTime, lunchTime, setLunchTime, dinnerTime, setDinnerTime, bedTimeSnack, setBedTimeSnack, handleDoseCompletion, setSavedTime, treatmentData }) => {
-    console.log('MedicineTakingTracker component===>', treatmentData)
+const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreakfastTime, lunchTime, setLunchTime, dinnerTime, setDinnerTime, bedTimeSnack, setBedTimeSnack, handleDoseCompletion, setSavedTime, treatmentData, setNotifications }) => {
     return (
         <View>
             <View style={[styles.secondaryblock, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", }]}>
@@ -121,7 +121,7 @@ const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreak
                 </View>
                 <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
                     <TouchableOpacity style={{ backgroundColor: breakfastTime === 2 ? COLORS.primary : breakfastTime === 1 ? '#b0120f' : breakfastTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                        onPress={() => { setBreakfastTime(breakfastTime + 1), setLunchTime(1), handleDoseCompletion(1, 'breakfast'), setSavedTime(treatmentData.selectLunchTime) }}
+                        onPress={() => { setBreakfastTime(breakfastTime + 1), setLunchTime(1), handleDoseCompletion(1, 'breakfast'), setSavedTime(treatmentData.selectLunchTime), setNotifications('lunch time', treatmentData.selectLunchTime) }}
                     >
                         <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{breakfastTime === 1 ? t('not-taken') : breakfastTime === 2 ? t('taken') : breakfastTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                     </TouchableOpacity>
@@ -136,7 +136,7 @@ const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreak
                 </View>
                 <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
                     <TouchableOpacity disabled={lunchTime === 0 ? true : false} style={{ backgroundColor: lunchTime === 2 ? COLORS.primary : lunchTime === 1 ? '#b0120f' : lunchTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                        onPress={() => { setLunchTime(lunchTime + 1), setDinnerTime(1), handleDoseCompletion(1, 'lunch'), setSavedTime(treatmentData.selectDinnerTime) }}
+                        onPress={() => { setLunchTime(lunchTime + 1), setDinnerTime(1), handleDoseCompletion(1, 'lunch'), setSavedTime(treatmentData.selectDinnerTime), setNotifications('dinner time', treatmentData.selectDinnerTime) }}
                     >
                         <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{lunchTime === 1 ? t('not-taken') : lunchTime === 2 ? t('taken') : lunchTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                     </TouchableOpacity>
@@ -151,7 +151,7 @@ const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreak
                 </View>
                 <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
                     <TouchableOpacity disabled={dinnerTime === 0 ? true : false} style={{ backgroundColor: dinnerTime === 2 ? COLORS.primary : dinnerTime === 1 ? '#b0120f' : dinnerTime === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                        onPress={() => { setDinnerTime(dinnerTime + 1), setBedTimeSnack(1), handleDoseCompletion(1, 'dinner'), setSavedTime(treatmentData.selectBedTimeSnackTime) }}
+                        onPress={() => { setDinnerTime(dinnerTime + 1), setBedTimeSnack(1), handleDoseCompletion(1, 'dinner'), setSavedTime(treatmentData.selectBedTimeSnackTime), setNotifications('bed time snack', treatmentData.selectBedTimeSnackTime) }}
                     >
                         <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{dinnerTime === 1 ? t('not-taken') : dinnerTime === 2 ? t('taken') : dinnerTime === 0 ? t('wait-for-time') : t('taken')}</Text>
                     </TouchableOpacity>
@@ -166,7 +166,7 @@ const MedicineTakingTracker: React.FC<TrackerProps> = ({ breakfastTime, setBreak
                 </View>
                 <View style={{ flex: 1, alignItems: i18next.language === "ar" ? 'flex-start' : "flex-end" }}>
                     <TouchableOpacity disabled={bedTimeSnack === 0 ? true : false} style={{ backgroundColor: bedTimeSnack === 2 ? COLORS.primary : bedTimeSnack === 1 ? '#b0120f' : bedTimeSnack === 0 ? '#b9bbb7' : COLORS.primary, width: scale(100), height: vs(25), borderRadius: 8, alignItems: "center", justifyContent: "center", marginVertical: 5 }}
-                        onPress={() => { setBedTimeSnack(bedTimeSnack + 1), handleDoseCompletion(1, 'bedtimeSnack'), setSavedTime(treatmentData.selectBreakFastTime) }}
+                        onPress={() => { setBedTimeSnack(bedTimeSnack + 1), handleDoseCompletion(1, 'bedtimeSnack'), setSavedTime(treatmentData.selectBreakFastTime), setNotifications('breakfast time', treatmentData.selectBreakFastTime) }}
                     >
                         <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(11) : vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{bedTimeSnack === 1 ? t('not-taken') : bedTimeSnack === 2 ? t('taken') : bedTimeSnack === 0 ? t('wait-for-time') : t('taken')}</Text>
                     </TouchableOpacity>

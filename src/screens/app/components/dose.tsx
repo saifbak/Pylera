@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Pressable, Image, TouchableOpacity, Alert } from 'react-native';
 import { COLORS, FONTS, ICONS, } from '../../../shared/utils/theme';
 import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import * as Progress from 'react-native-progress';
@@ -10,11 +10,11 @@ import moment from 'moment';
 import Countdown from '../../../shared/components/Countdown';
 import MedicineTakingTracker from '../../../shared/components/DoseManagement';
 import { useIsFocused } from '@react-navigation/native';
+import Notificatons from '../../../../Notificatons';
 
 const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
     const isFocused = useIsFocused();
     const { t } = useTranslation();
-
 
     const {
         treatmentProgress,
@@ -40,22 +40,37 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
     } = useDose()
 
     useEffect(() => {
-        fetchData()
-        fetchTrackerData()
+        fetchData();
+        fetchTrackerData();
     }, [isFocused]);
 
     useEffect(() => {
-        // setSavedTime(treatmentData.selectBreakFastTime)
-        fetchSavedTimeData()
-    }, [treatmentData])
+        fetchSavedTimeData();
+    }, [treatmentData]);
 
-    console.log('Dose Screen===>', treatmentData)
+    const setNotifications = (reminder: string, dates: any) => {
+        if (!!dates) {
+            const [hour, minute, meridiem] = dates.match(/(\d{2}):(\d{2}) (AM|PM)/).slice(1);
+            const hourIn24Format = meridiem === "PM" ? parseInt(hour) + 12 : parseInt(hour);
+
+            const date = new Date();
+            date.setHours(hourIn24Format);
+            date.setMinutes(parseInt(minute));
+            date.setSeconds(0);
+
+            Notificatons.scheduleNotification({ reminder: reminder, date: date })
+        }
+        else {
+            Alert.alert('Please select yout dose timings.')
+        }
+    }
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                     <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", }}><Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
+                    {/* <Pressable onPress={() => setNotifications()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", }}><Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.primary, fontSize: vs(13) }}>{t('noti')}</Text></Pressable> */}
                     <View style={[styles.block, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", backgroundColor: '#ebf1fa' }]}>
                         <Text style={{ fontSize: i18next.language === "ar" ? vs(14) : vs(16), width: 130, height: vs(55), color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, }}>{t('your-treatment')}</Text>
                         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -65,7 +80,6 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                         </View>
                     </View>
                     <View>
-
                     </View>
                     <View style={[styles.block, { flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", backgroundColor: COLORS.secondary }]}>
                         <Text style={{ fontSize: vs(16), width: 130, height: vs(55), color: COLORS.white, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold }}>{t('next-dose')}</Text>
@@ -95,6 +109,7 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                             handleDoseCompletion={handleDoseCompletion}
                             setSavedTime={saveSavedTimeData}
                             treatmentData={treatmentData}
+                            setNotifications={setNotifications}
                         />
                     </View>
                 </View>

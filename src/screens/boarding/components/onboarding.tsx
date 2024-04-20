@@ -114,13 +114,13 @@ const Onboarding = ({ navigation }: any) => {
                 </Swiper>
                 <TouchableOpacity
                     onPress={handleNext}
-                    style={{ position: "absolute", bottom: 15, alignSelf: "center", flexDirection: 'row', alignItems: "center", justifyContent: "center", padding: 5 }}>
+                    style={{ position: "absolute", bottom: 15, alignSelf: "center", flexDirection: i18next.language === "ar" ? "row-reverse" : 'row', alignItems: i18next.language === "ar" ? "center" : "center", justifyContent: i18next.language === "ar" ? "center" : "center", padding: 5, }}>
                     <View style={{ width: 70 }} />
                     <View style={{ width: 100, height: vs(25), borderRadius: 50, backgroundColor: "#4597cf", alignItems: "center", justifyContent: "center" }}>
                         <Text style={{ color: "#ffffff", fontSize: vs(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal }}>{currentIndex === detailsContent.length - 1 ? t("lets-start") : t('next')}</Text>
                     </View>
                     <View style={{ width: 70 }}>
-                        <Image source={ICONS.arrow} style={{ width: 30, height: 30, resizeMode: "contain" }} />
+                        <Image source={ICONS.arrow} style={{ width: 30, height: 30, resizeMode: "contain", transform: [{ rotate: i18next.language === "ar" ? '180deg' : '0deg' }] }} />
                     </View>
                 </TouchableOpacity>
             </View >

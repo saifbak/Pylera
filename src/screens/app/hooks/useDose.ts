@@ -13,6 +13,14 @@ interface MedicineTakingData {
   data: MedicineDose;
 }
 
+export interface ITreatmentCompletion {
+  breafast: boolean;
+  lunch: boolean;
+  dinner: boolean;
+  bedtimeSnack: boolean;
+  day: number;
+}
+
 const useDose = () => {
   const [treatmentProgress, setTreatmentProgress] = useState(0);
   const [breakfastTime, setBreakfastTime] = useState(1);
@@ -86,6 +94,7 @@ const useDose = () => {
     }
   };
 
+  console.log('medicineTakingData===>,', medicineTakingData);
   const getProgress = () => {
     const completedDoses = medicineTakingData.reduce((acc, data) => {
       const completedDosesForDay = Object.values(data.data).filter(
