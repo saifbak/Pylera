@@ -44,7 +44,8 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                     showsPagination={true}
                     onIndexChanged={(index) => setCurrentIndex(index)}
                     pagingEnabled
-                    paginationStyle={{ bottom: 70 }}
+                    paginationStyle={{ bottom: 70, flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}
+
                 >
                     {detailsContent.map((detail, index) => (
                         <View key={index} style={{ flex: 1, }}>
@@ -94,11 +95,11 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                             <View style={{ flexDirection: "row" }}>
                                                 <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), alignSelf: "flex-start" }}>{`Causing Peptic\nUlcer Disease`}</Text><Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(13), textAlignVertical: 'top', top: 40, left: -13 }}>{t('sup-3')}</Text>
                                             </View>
-                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-1')}</Text>
+                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-1')}</Text>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: i18next.language === "ar" ? vs(10) : 0 }}>{t('cause-li-para-1')}</Text>
-                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-2')}</Text>
+                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-2')}</Text>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: i18next.language === "ar" ? vs(10) : 0 }}>{t('cause-li-para-2')}</Text>
-                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-3')}</Text>
+                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-3')}</Text>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", }}>{t('cause-li-para-3')}</Text>
                                         </View>
                                         : index === 3 ?
@@ -113,74 +114,74 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : "row", marginTop: vs(-15) }}>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.cranberry} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('cranberry')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('cranberry')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.broccoli} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('broccoli')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('broccoli')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.beans} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('beans')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('beans')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.green_banana} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('green-banana')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('green-banana')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.aloevera} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('aloe-vera')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('aloe-vera')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.gabbage} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('cabbage')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('cabbage')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.oregano} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('oregano')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('oregano')}</Text>
                                                     </View>
                                                 </View>
                                                 <Image source={ICONS.dont} style={{ width: scale(75), height: vs(75), resizeMode: "contain", marginTop: -20 }} />
                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : 'row', marginTop: vs(-18) }}>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.pickles} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('pickles')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('pickles')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.spices} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('spices')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('spices')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.tea} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('tea')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('tea')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.chocolate} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('chocolate')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('chocolate')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.citrus} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('citrus')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('citrus')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.fries} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('fries')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('fries')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.coffee} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('coffee')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('coffee')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.softdrink} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('soda-drinks')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('soda-drinks')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.tomatoes} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('tomatoes')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('tomatoes')}</Text>
                                                     </View>
                                                     <View style={{ alignItems: "center", marginRight: 15, marginTop: 5 }}>
                                                         <Image source={ICONS.redmeat} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
-                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: "justify", }}>{t('red-meat')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('red-meat')}</Text>
                                                     </View>
                                                 </View>
                                             </View>
@@ -188,14 +189,14 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                             : index === 4 ?
                                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                     <Image source={ICONS.facts} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />
-                                                    <View style={{ flexDirection: "row", marginTop: -20, marginBottom: 20 }}>
-                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), }}>H. Pylori Facts</Text>
+                                                    <View style={{ flexDirection: "row", marginTop: -20, marginBottom: 20, alignSelf: i18next.language == "ar" ? "flex-end" : "flex-start" }}>
+                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), textAlign: i18next.language == "ar" ? "right" : "left" }}>H. Pylori Facts</Text>
                                                         <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.appgreen,
                                                             fontSize: vs(13), // Adjust the font size for superscript
                                                             lineHeight: 40, // Adjust the line height for superscript
                                                             textAlignVertical: 'top',
-                                                        }}>16-19
+                                                        }}>12-17
                                                         </Text>
                                                     </View>
                                                     <View style={{ flex: .7, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>

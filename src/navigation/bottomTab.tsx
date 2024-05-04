@@ -9,12 +9,13 @@ import Treatment from '../screens/app/components/treatment';
 import Dose from '../screens/app/components/dose';
 import { createStackNavigator } from '@react-navigation/stack';
 import Track from '../screens/app/components/track';
+import i18next from 'i18next';
 
 const Tab = createBottomTabNavigator();
 
 function MyTabBar({ state, descriptors, navigation }: any) {
     return (
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row' }}>
             {state.routes.map((route: { key: string | number; name: any; params: any; }, index: any) => {
                 const { options } = descriptors[route.key];
                 const label =

@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { Dispatch, FC, SetStateAction } from 'react'
 import { ScaledSheet, scale, vs } from 'react-native-size-matters'
 import { FONTS, ICONS } from '../../utils/theme'
+import { useTranslation } from 'react-i18next'
 
 type CustomLanguageSelectorProps = {
     select: string;
@@ -12,9 +13,10 @@ const CustomLanguageSelector: FC<CustomLanguageSelectorProps> = ({
     select,
     onSelect
 }: CustomLanguageSelectorProps) => {
+    const { i18n } = useTranslation()
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={select === 'en' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70), }}
+            <TouchableOpacity style={select === 'en' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: i18n.language == "ar" ? "row-reverse" : 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70), }}
                 onPress={() => {
                     onSelect('en')
                 }}
@@ -24,7 +26,7 @@ const CustomLanguageSelector: FC<CustomLanguageSelectorProps> = ({
                     <Image source={ICONS.check_mark} style={{ width: scale(20), height: vs(20), resizeMode: 'contain', left: 3, bottom: 2 }} />
                 </View>}
             </TouchableOpacity>
-            <TouchableOpacity style={select === 'ar' ? { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70) }}
+            <TouchableOpacity style={select === 'ar' ? { flexDirection: i18n.language == "ar" ? "row-reverse" : 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, backgroundColor: "#c2e1f1", height: vs(70), borderTopColor: '#4597cf', borderBottomColor: '#4597cf', borderTopWidth: 2, borderBottomWidth: 2 } : { flexDirection: 'row', justifyContent: "space-between", alignItems: "center", paddingHorizontal: 30, height: vs(70) }}
                 onPress={() => {
                     onSelect('ar')
                 }}

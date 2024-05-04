@@ -3,6 +3,7 @@ import React from 'react'
 import { FONTS, ICONS } from '../../../shared/utils/theme'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 const Splash = () => {
     const { t } = useTranslation();
@@ -17,7 +18,7 @@ const Splash = () => {
                 <View style={{ flex: 1, justifyContent: "center" }}>
                     <View style={{ justifyContent: "center", alignSelf: "center", marginTop: -150, }}>
                         <Image source={ICONS.logo} style={{ width: 300, height: 300, resizeMode: "contain", marginBottom: -50, alignSelf: "center" }} />
-                        <Text style={{ marginBottom: -20, textAlign: "center", color: '#4597cf', fontSize: verticalScale(15), fontFamily: FONTS.semibold }}>{t('welcome-to-eradicate')}</Text>
+                        <Text style={{ marginBottom: -20, textAlign: "center", color: '#4597cf', fontSize: verticalScale(15), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold }}>{t('welcome-to-eradicate')}</Text>
                     </View>
                 </View>
             </View>

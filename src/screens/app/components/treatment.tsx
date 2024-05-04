@@ -224,14 +224,14 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                                 <Image source={ICONS.caution} style={{ width: scale(200), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
                                 <View style={{ flexDirection: "row", marginTop: vs(10), marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
-                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(13), }}>{t('medical-heading')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.h1, color: COLORS.secondary, fontSize: vs(13), }}>{t('medical-heading')}</Text>
                                     <Text style={{
                                         fontFamily: FONTS.h1, color: COLORS.secondary,
                                         fontSize: vs(8),
                                         lineHeight: 20,
                                         textAlignVertical: 'top',
                                         marginLeft: 1
-                                    }}>20
+                                    }}>18
                                     </Text>
                                 </View>
                                 <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-1')}</Text>
@@ -281,7 +281,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                         <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8, marginBottom: i18next.language === 'ar' ? 5 : 0 }}>{t('date-time-para')}</Text>
                                                         <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
-                                                        <Text style={styles.month}>{`${currentMonth}, ${currentYear}`}</Text>
+                                                        <Text style={styles.month}>{i18next.language === "ar" ? "" : `${currentMonth}, ${currentYear}`}</Text>
                                                         <FlatList
                                                             contentContainerStyle={{ height: vs(55), }}
                                                             showsHorizontalScrollIndicator={false}
@@ -349,7 +349,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             {/* <Text style={{ fontFamily: FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: "justify", marginTop: -8 }}>To set your treatment plan, please enter the following data, and the application will send you notification reminders to take your dose</Text> */}
                                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "left", marginBottom: -5 }}>{t('set-meal')}</Text>
                                                             <View>
-                                                                <Text style={styles.Headings}>{t('breakfast-time')}</Text>
+                                                                <Text style={[styles.Headings, {
+                                                                    fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
+                                                                    textAlign: i18next.language === 'ar' ? 'right' : "left",
+                                                                }]}>{t('breakfast-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -369,7 +372,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View style={{}}>
-                                                                <Text style={styles.Headings}>{t('lunch-time')}</Text>
+                                                                <Text style={[styles.Headings, {
+                                                                    fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
+                                                                    textAlign: i18next.language === 'ar' ? 'right' : "left",
+                                                                }]}>{t('lunch-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -389,7 +395,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View>
-                                                                <Text style={styles.Headings}>{t('dinner-time')}</Text>
+                                                                <Text style={[styles.Headings, {
+                                                                    fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
+                                                                    textAlign: i18next.language === 'ar' ? 'right' : "left",
+                                                                }]}>{t('dinner-time')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -409,7 +418,10 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 />
                                                             </View>
                                                             <View>
-                                                                <Text style={styles.Headings}>{t('bed-time-snack')}</Text>
+                                                                <Text style={[styles.Headings, {
+                                                                    fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
+                                                                    textAlign: i18next.language === 'ar' ? 'right' : "left",
+                                                                }]}>{t('bed-time-snack')}</Text>
                                                                 <FlatList
                                                                     showsHorizontalScrollIndicator={false}
                                                                     data={clockArray}
@@ -432,7 +444,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </>
                                                     : index === 3 ?
                                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                            <View style={{ flexDirection: "row" }}>
+                                                            {/* <View style={{ flexDirection: "row" }}>
                                                                 <View style={{ flexDirection: "row" }}>
                                                                     <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
                                                                     <Text style={{
@@ -453,7 +465,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     }}>20
                                                                     </Text>
                                                                 </View>
-                                                            </View>
+                                                            </View> */}
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? -0 : -8 }}>{t('administrator')}</Text>
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
                                                             <View style={styles.table}>
@@ -484,7 +496,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 </View>
                                                             </View>
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
-                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
                                                         </View>
                                                         : null
@@ -542,10 +554,9 @@ const styles = ScaledSheet.create({
         marginVertical: 10
     },
     Headings: {
-        fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold,
+
         color: COLORS.primary,
         fontSize: vs(15),
-        textAlign: i18next.language === 'ar' ? 'right' : "left",
         marginVertical: 10
     },
     day: {

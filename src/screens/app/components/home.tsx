@@ -20,8 +20,8 @@ const Home = () => {
                         <Image source={ICONS.logo} style={{ width: scale(110), height: vs(50), resizeMode: "contain" }} />
                     </View>
                     <View style={{ width: scale(180), paddingLeft: scale(25), marginTop: vs(-3), alignItems: i18next.language === "ar" ? 'flex-end' : "flex-start" }}>
-                        <Text style={{ color: COLORS.white, fontSize: vs(40), marginTop: i18next.language === "ar" ? 20 : 0, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t("hello")}</Text>
-                        <Text style={{ color: COLORS.white, fontSize: vs(14), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, textAlign: i18next.language === "ar" ? 'right' : "left", marginTop: i18next.language === "ar" ? -5 : -15 }}>{t('home-para')}</Text>
+                        <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(35) : vs(40), marginTop: i18next.language === "ar" ? 20 : 0, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t("hello")}</Text>
+                        <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(13) : vs(14), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, textAlign: i18next.language === "ar" ? 'right' : "left", marginTop: i18next.language === "ar" ? -5 : -15 }}>{t('home-para')}</Text>
                     </View>
                 </View>
                 <View style={{ justifyContent: "space-between", }}>

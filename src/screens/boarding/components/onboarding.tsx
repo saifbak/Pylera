@@ -53,10 +53,10 @@ const Onboarding = ({ navigation }: any) => {
                         <View key={index} style={{ flex: 1, }}>
                             {index === 0 ?
                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
-                                    <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
+                                    <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                         <View style={{ width: scale(70) }} />
                                         <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
-                                            <Text style={{ color: '#4597cf', fontSize: verticalScale(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium }}>{t('skip')}</Text>
+                                            <Text style={{ color: '#4597cf', fontSize: verticalScale(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium, }}>{t('skip')}</Text>
                                         </TouchableOpacity>
                                     </View>
                                     <View style={{ justifyContent: "space-around", height: vs(100) }}>
@@ -72,7 +72,7 @@ const Onboarding = ({ navigation }: any) => {
                                 </View>
                                 : index === 1 ?
                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
-                                        <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
+                                        <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                             <View style={{ width: scale(70) }} />
                                             <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                                 <Text style={{ color: '#4597cf', fontSize: verticalScale(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium }}>{t('skip')}</Text>
@@ -90,7 +90,7 @@ const Onboarding = ({ navigation }: any) => {
                                     </View>
                                     : index === 2 ?
                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: (15), }}>
-                                            <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
+                                            <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                                 <View style={{ width: scale(70) }} />
                                                 {/* <View style={styles.indicator} /> */}
                                                 <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
