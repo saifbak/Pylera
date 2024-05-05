@@ -38,7 +38,6 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
         navigation.navigate('Home');
     };
 
-    console.warn('chvhjvhv', i18next.language)
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
@@ -53,7 +52,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 {i18next.language !== "ar" ? <Text style={{
                                     fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary,
                                     fontSize: vs(8),
-                                    lineHeight: 20,
+                                    lineHeight: 35,
                                     textAlignVertical: 'top',
                                     marginLeft: 1
                                 }}>18
@@ -131,25 +130,26 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     </View>
                                     : index === 1 ?
                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                            <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", }}>
+                                            <View style={{ flexDirection: "column", }}>
                                                 <View style={{ flexDirection: "row" }}>
                                                     <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
                                                     <Text style={{
                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                         fontSize: vs(17),
-                                                        lineHeight: 40,
+                                                        // lineHeight: 40,
                                                         textAlignVertical: 'top',
                                                     }}>®
                                                     </Text>
+                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{'Dosage'}</Text>
                                                 </View>
-                                                <View style={{ flexDirection: "row", }}>
-                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Dose Education</Text>
+                                                <View style={{ flexDirection: "row", marginTop: -20 }}>
+                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{'and Administration'}</Text>
                                                     <Text style={{
                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                         fontSize: vs(13),
-                                                        lineHeight: 40,
+                                                        // lineHeight: 40,
                                                         textAlignVertical: 'top',
-                                                    }}>20
+                                                    }}>18
                                                     </Text>
                                                 </View>
                                             </View>
@@ -201,13 +201,13 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         </Text>
                                                     </View>
                                                     <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Adverse Events</Text>
+                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Adverse Reactions</Text>
                                                         <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.primary,
                                                             fontSize: vs(13),
                                                             lineHeight: 40,
                                                             textAlignVertical: 'top',
-                                                        }}>20
+                                                        }}>18
                                                         </Text>
                                                     </View>
                                                 </View>
@@ -240,7 +240,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 fontSize: vs(13),
                                                                 lineHeight: 40,
                                                                 textAlignVertical: 'top',
-                                                            }}>20
+                                                            }}>18
                                                             </Text>
                                                         </View>
                                                     </View>
@@ -276,7 +276,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     fontSize: vs(13),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
-                                                                }}>20
+                                                                }}>18
                                                                 </Text>
                                                             </View>
                                                         </View>
@@ -302,7 +302,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     fontSize: vs(13),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
-                                                                }}>20
+                                                                }}>18
                                                                 </Text>
                                                             </View>
                                                         </View>
@@ -334,7 +334,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                                 <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Contraindications</Text>
+                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Interactions</Text>
                                                                     <Text style={{
                                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                                         fontSize: vs(13),
@@ -344,12 +344,12 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     </Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-heading')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.primary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-heading')}</Text>
                                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8 }}>{t('contraindications-para')}</Text>
 
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-1')}</Text>
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -8 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-2')}</Text>
-                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -8 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-3')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.primary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-1')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.primary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -8 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-2')}</Text>
+                                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.semibold : FONTS.semibold, color: COLORS.primary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -8 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('contraindications-li-3')}</Text>
                                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", }}>{t('contraindications-para-3')}</Text>
                                                         </View>
                                                         : null
@@ -361,7 +361,9 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                             <TouchableOpacity style={{ backgroundColor: COLORS.primary, width: scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={handleNext}  >
                                 <Text style={{ color: COLORS.white, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('go-back') : t('next')} </Text>
                             </TouchableOpacity>
-                            <Text style={{ color: COLORS.secondary, fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t("disclaimer-n-references")}</Text>
+                            <Text
+                                onPress={() => navigation.navigate('References')}
+                                style={{ color: COLORS.secondary, fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t("disclaimer-n-references")}</Text>
                         </View>
                     </>
                 }

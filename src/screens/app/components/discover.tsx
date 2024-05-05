@@ -107,10 +107,12 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <Image source={ICONS.dodont} style={{ width: scale(90), height: vs(60), resizeMode: "contain", alignSelf: i18next.language === 'ar' ? 'flex-end' : "flex-start" }} />
                                                 <View style={{ flexDirection: "row" }}>
                                                     <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(20) }}>{t('do-dont')}</Text>
-                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 40, textAlignVertical: 'top', }}>8-15</Text>
                                                 </View>
                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: -20, marginTop: -5 }}>{t('do-dont-para')}</Text>
-                                                <Image source={ICONS.do} style={{ width: scale(75), height: vs(75), resizeMode: "contain", }} />
+                                                <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                    <Image source={ICONS.do} style={{ width: scale(75), height: vs(75), resizeMode: "contain", }} />
+                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 80, textAlignVertical: 'top', marginLeft: 5 }}>4, 5, 8-11</Text>
+                                                </View>
                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : "row", marginTop: vs(-15) }}>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.cranberry} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
@@ -141,7 +143,10 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(8.5), textAlign: i18next.language === "ar" ? "center" : "justify", }}>{t('oregano')}</Text>
                                                     </View>
                                                 </View>
-                                                <Image source={ICONS.dont} style={{ width: scale(75), height: vs(75), resizeMode: "contain", marginTop: -20 }} />
+                                                <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                    <Image source={ICONS.dont} style={{ width: scale(75), height: vs(75), resizeMode: "contain", marginTop: -20 }} />
+                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: '#e62341', fontSize: vs(12), lineHeight: 30, textAlignVertical: 'top', marginLeft: 5 }}>4, 5</Text>
+                                                </View>
                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : 'row', marginTop: vs(-18) }}>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
                                                         <Image source={ICONS.pickles} style={{ width: scale(40), height: vs(40), resizeMode: "contain", }} />
@@ -253,7 +258,9 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                     <TouchableOpacity style={{ backgroundColor: COLORS.primary, width: scale(100), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={handleNext}  >
                         <Text style={{ color: COLORS.white, fontSize: vs(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('go-back') : t('next')} </Text>
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t("disclaimer-n-references")}</Text>
+                    <Text
+                        onPress={() => navigation.navigate('References')}
+                        style={{ color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t("disclaimer-n-references")}</Text>
                 </View>
             </View >
         </View >

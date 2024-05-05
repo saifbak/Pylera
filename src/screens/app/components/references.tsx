@@ -21,8 +21,33 @@ const References: FC<referenceProps> = ({ navigation }) => {
                     <Image source={ICONS.cross} style={styles.iconStyle} />
                 </Pressable>
                 <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: "#af0f10", fontSize: vs(14), marginTop: vs(20) }}>{t('references')}</Text>
-                <ScrollView style={{ flex: 1, }}>
-                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: "#af0f10", fontSize: vs(14), marginTop: vs(20) }}>{t('references')}</Text>
+                <ScrollView style={{ width: '100%', marginTop: 20 }}>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point1')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point2')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point3')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point4')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point5')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point6')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point7')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point8')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point9')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point10')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point11')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point12')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point13')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point14')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point15')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point16')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point17')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point18')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point19')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point20')}</Text>
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: "#af0f10", fontSize: vs(14), marginVertical: vs(10) }}>{t('disclaimers')}</Text>
+
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-1')}</Text>
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-mail')}</Text>
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-2')}</Text>
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-3')}</Text>
                 </ScrollView>
             </View>
         </View>

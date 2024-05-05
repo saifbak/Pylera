@@ -510,7 +510,9 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 >
                                     <Text style={{ color: COLORS.white, fontSize: i18next.language === "ar" ? vs(10) : vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{currentIndex === detailsContent.length - 1 ? t('reset-mealtimes') : currentIndex === 2 ? t("start") : t('next')} </Text>
                                 </TouchableOpacity>
-                                <Text style={{ color: COLORS.secondary, fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t('disclaimer-n-references')}</Text>
+                                <Text
+                                    onPress={() => navigation.navigate('References')}
+                                    style={{ color: COLORS.secondary, fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(9), textAlign: 'center' }}>{t('disclaimer-n-references')}</Text>
                             </View></>
                 }
             </View >
