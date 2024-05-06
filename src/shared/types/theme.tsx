@@ -306,6 +306,7 @@ export interface ThemeIcons {
     h_treatment: ImageSourcePropType;
     bell: ImageSourcePropType;
     facts: ImageSourcePropType;
+    factsAR: ImageSourcePropType;
     symptoms: ImageSourcePropType;
     cause: ImageSourcePropType;
     infection: ImageSourcePropType;

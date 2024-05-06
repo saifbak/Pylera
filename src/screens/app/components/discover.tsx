@@ -52,12 +52,12 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                             {index === 0 ?
                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                     <Image source={ICONS.infection} style={{ width: scale(250), height: vs(170), resizeMode: "contain", alignSelf: "center" }} />
-                                    <View style={{ flexDirection: "row", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>Infection</Text>
+                                    <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
+                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>{t('infection')}</Text>
                                         <Text style={{
                                             fontFamily: FONTS.h1, color: COLORS.appgreen,
                                             fontSize: vs(13),
-                                            lineHeight: 40,
+                                            lineHeight: i18next.language === "ar" ? 25 : 40,
                                             textAlignVertical: 'top',
                                         }}>1,2
                                         </Text>
@@ -70,12 +70,12 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 : index === 1 ?
                                     <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                         <Image source={ICONS.symptoms} style={{ width: scale(250), height: vs(170), resizeMode: "contain", alignSelf: "center" }} />
-                                        <View style={{ flexDirection: "row" }}>
-                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>Symptoms</Text>
+                                        <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>{t('symptoms')}</Text>
                                             <Text style={{
                                                 fontFamily: FONTS.h1, color: COLORS.appgreen,
                                                 fontSize: vs(13), // Adjust the font size for superscript
-                                                lineHeight: 40, // Adjust the line height for superscript
+                                                lineHeight: i18next.language === "ar" ? 25 : 40, // Adjust the line height for superscript
                                                 textAlignVertical: 'top',
                                             }}>3
                                             </Text>
@@ -92,8 +92,20 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     : index === 2 ?
                                         <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                             <Image source={ICONS.cause} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />
-                                            <View style={{ flexDirection: "row" }}>
-                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), alignSelf: "flex-start" }}>{`Causing Peptic\nUlcer Disease`}</Text><Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(13), textAlignVertical: 'top', top: 40, left: -13 }}>{t('sup-3')}</Text>
+                                            {/* <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), alignSelf: "flex-start" }}>{t('cause')}</Text>
+                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(13), textAlignVertical: 'top', top: 40, lineHeight:, left: -13 }}>{t('sup-3')}
+                                                </Text>
+                                            </View> */}
+                                            <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>{t('cause')}</Text>
+                                                <Text style={{
+                                                    fontFamily: FONTS.h1, color: COLORS.appgreen,
+                                                    fontSize: vs(13), // Adjust the font size for superscript
+                                                    lineHeight: i18next.language === "ar" ? 25 : 40, // Adjust the line height for superscript
+                                                    textAlignVertical: 'top',
+                                                }}>{t('sup-3')}
+                                                </Text>
                                             </View>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-1')}</Text>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: i18next.language === "ar" ? vs(10) : 0 }}>{t('cause-li-para-1')}</Text>
@@ -105,8 +117,15 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         : index === 3 ?
                                             <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 30, }}>
                                                 <Image source={ICONS.dodont} style={{ width: scale(90), height: vs(60), resizeMode: "contain", alignSelf: i18next.language === 'ar' ? 'flex-end' : "flex-start" }} />
-                                                <View style={{ flexDirection: "row" }}>
+                                                <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", marginTop: 10 }}>
                                                     <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(20) }}>{t('do-dont')}</Text>
+                                                    <Text style={{
+                                                        fontFamily: FONTS.h1, color: COLORS.appgreen,
+                                                        fontSize: vs(13), // Adjust the font size for superscript
+                                                        lineHeight: i18next.language === "ar" ? 25 : 40, // Adjust the line height for superscript
+                                                        textAlignVertical: 'top',
+                                                    }}>{t('sup-4')}
+                                                    </Text>
                                                 </View>
                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: -20, marginTop: -5 }}>{t('do-dont-para')}</Text>
                                                 <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
@@ -193,18 +212,19 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                                             : index === 4 ?
                                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                    <Image source={ICONS.facts} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />
-                                                    <View style={{ flexDirection: "row", marginTop: -20, marginBottom: 20, alignSelf: i18next.language == "ar" ? "flex-end" : "flex-start" }}>
-                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), textAlign: i18next.language == "ar" ? "right" : "left" }}>H. Pylori Facts</Text>
+                                                    <Image source={i18next.language === "ar" ? ICONS.factsAR : ICONS.facts} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />
+                                                    <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", marginTop: -20, marginBottom: 20, alignSelf: i18next.language == "ar" ? "flex-end" : "flex-start" }}>
+                                                        <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(22), textAlign: i18next.language == "ar" ? "right" : "left" }}>{t('h-pylori-facts')}</Text>
                                                         <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.appgreen,
                                                             fontSize: vs(13), // Adjust the font size for superscript
-                                                            lineHeight: 40, // Adjust the line height for superscript
-                                                            textAlignVertical: 'top',
+                                                            lineHeight: i18next.language === "ar" ? 45 : 40, // Adjust the line height for superscript
+                                                            textAlignVertical: i18next.language === "ar" ? 'bottom' : "top",
+                                                            right: i18next.language === "ar" ? 230 : 0
                                                         }}>12-17
                                                         </Text>
                                                     </View>
-                                                    <View style={{ flex: .7, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>
+                                                    <View style={{ flex: .8, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>
                                                         <View style={{ width: scale(103), height: vs(100), backgroundColor: COLORS.secondary, padding: 5, alignItems: i18next.language === "ar" ? "flex-end" : "flex-start", justifyContent: "center", borderRadius: 12, }}>
                                                             <View style={{ flex: .7 }}>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.white, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", }}>{t('did-you-know')}</Text>

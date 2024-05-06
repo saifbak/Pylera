@@ -239,6 +239,7 @@ export const ICONS: ThemeIcons = {
   do: require('../../assets/icons/do.png'),
   dont: require('../../assets/icons/dont.png'),
   facts: require('../../assets/icons/facts.png'),
+  factsAR: require('../../assets/icons/facts-ar.png'),
   cranberry: require('../../assets/icons/cranberry.png'),
   broccoli: require('../../assets/icons/broccoli.png'),
   beans: require('../../assets/icons/beans.png'),
