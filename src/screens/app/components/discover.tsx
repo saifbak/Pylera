@@ -119,18 +119,18 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <Image source={ICONS.dodont} style={{ width: scale(90), height: vs(60), resizeMode: "contain", alignSelf: i18next.language === 'ar' ? 'flex-end' : "flex-start" }} />
                                                 <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", marginTop: 10 }}>
                                                     <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(20) }}>{t('do-dont')}</Text>
-                                                    <Text style={{
+                                                    {/* <Text style={{
                                                         fontFamily: FONTS.h1, color: COLORS.appgreen,
                                                         fontSize: vs(13), // Adjust the font size for superscript
                                                         lineHeight: i18next.language === "ar" ? 25 : 40, // Adjust the line height for superscript
                                                         textAlignVertical: 'top',
                                                     }}>{t('sup-4')}
-                                                    </Text>
+                                                    </Text> */}
                                                 </View>
                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: -20, marginTop: -5 }}>{t('do-dont-para')}</Text>
                                                 <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
                                                     <Image source={ICONS.do} style={{ width: scale(75), height: vs(75), resizeMode: "contain", }} />
-                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 80, textAlignVertical: 'top', marginLeft: 5 }}>4, 5, 8-11</Text>
+                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 80, textAlignVertical: 'top', marginLeft: 5 }}>8-13</Text>
                                                 </View>
                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : "row", marginTop: vs(-15) }}>
                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
@@ -209,7 +209,6 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </View>
                                                 </View>
                                             </View>
-
                                             : index === 4 ?
                                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                     <Image source={i18next.language === "ar" ? ICONS.factsAR : ICONS.facts} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />

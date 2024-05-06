@@ -191,25 +191,25 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 </View>
                                             </View>
                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 10, marginBottom: i18next.language === 'ar' ? 10 : 0 }}>{t('dose-para-2')}</Text>
-                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 5, marginBottom: i18next.language === 'ar' ? 8 : 0 }}>{t('dose-heading-2')}</Text>
+                                            <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 5, marginBottom: i18next.language === 'ar' ? 8 : 0 }}>{t('dose-heading-3')}</Text>
                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}>{t('dose-para-3')}</Text>
                                         </View>
                                         : index === 2 ?
                                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                 <Image source={ICONS.events} style={{ width: scale(250), height: vs(190), resizeMode: "contain", alignSelf: "center" }} />
                                                 <View style={{ flexDirection: "column", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                                    <View style={{ flexDirection: "row" }}>
-                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                        <Text style={{
+                                                    <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t("pylera")}</Text>
+                                                        {i18next.language == "en" && <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.primary,
                                                             fontSize: vs(17),
                                                             lineHeight: 40,
                                                             textAlignVertical: 'top',
                                                         }}>®
-                                                        </Text>
+                                                        </Text>}
                                                     </View>
-                                                    <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Adverse Reactions</Text>
+                                                    <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", marginTop: i18next.language === "ar" ? -10 : -20 }}>
+                                                        <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('adverse-heading')}</Text>
                                                         <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.primary,
                                                             fontSize: vs(13),
@@ -229,20 +229,20 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                     <Image source={ICONS.information} style={{ width: scale(160), height: vs(110), resizeMode: "contain", alignSelf: "center" }} />
                                                     <View style={{ flexDirection: "column", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                                        <View style={{ flexDirection: "row" }}>
-                                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                            <Text style={{
+                                                        <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
+                                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
+                                                            {i18next.language == "en" && <Text style={{
                                                                 fontFamily: FONTS.h1, color: COLORS.primary,
                                                                 fontSize: vs(17),
                                                                 lineHeight: 40,
                                                                 textAlignVertical: 'top',
                                                             }}>®
-                                                            </Text>
-                                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Patient</Text>
+                                                            </Text>}
+                                                            {i18next.language === "en" && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Patient</Text>}
 
                                                         </View>
-                                                        <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Counseling Information</Text>
+                                                        <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row", marginTop: -20 }}>
+                                                            <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('counseling-information')}</Text>
                                                             <Text style={{
                                                                 fontFamily: FONTS.h1, color: COLORS.primary,
                                                                 fontSize: vs(13),
@@ -265,20 +265,20 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                         <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginBottom: -20 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('skip')}</Text></Pressable>
                                                         <View style={{ flexDirection: "column", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                                            <View style={{ flexDirection: "row" }}>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                                <Text style={{
+                                                            <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row" }}>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
+                                                                {i18next.language !== "ar" && <Text style={{
                                                                     fontFamily: FONTS.h1, color: COLORS.primary,
                                                                     fontSize: vs(17),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
                                                                 }}>®
-                                                                </Text>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Warning</Text>
+                                                                </Text>}
+                                                                {i18next.language !== "ar" && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Warning</Text>}
 
                                                             </View>
-                                                            <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>& Precautions</Text>
+                                                            <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row", marginTop: -20 }}>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('precautions')}</Text>
                                                                 <Text style={{
                                                                     fontFamily: FONTS.h1, color: COLORS.primary,
                                                                     fontSize: vs(13),
@@ -291,20 +291,20 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}>{t('warning-heading')}</Text>
                                                         <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -8 }}>{t('warning-para')}</Text>
                                                         <View style={{ flexDirection: "column", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                                            <View style={{ flexDirection: "row" }}>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                                <Text style={{
+                                                            <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row" }}>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
+                                                                {i18next.language == "en" && <Text style={{
                                                                     fontFamily: FONTS.h1, color: COLORS.primary,
                                                                     fontSize: vs(17),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
                                                                 }}>®
-                                                                </Text>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Drug</Text>
+                                                                </Text>}
+                                                                {i18next.language == "en" && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Drug</Text>}
 
                                                             </View>
-                                                            <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Interactions</Text>
+                                                            <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row", marginTop: i18next.language == "ar" ? -10 : -20 }}>
+                                                                <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('interactions')}</Text>
                                                                 <Text style={{
                                                                     fontFamily: FONTS.h1, color: COLORS.primary,
                                                                     fontSize: vs(13),
@@ -331,18 +331,18 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                                                             <Image source={ICONS.caution2} style={{ width: scale(170), height: vs(180), resizeMode: "contain", alignSelf: "flex-start", marginLeft: -25 }} />
                                                             <View style={{ flexDirection: "column", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                                    <Text style={{
+                                                                <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row" }}>
+                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('pylera')}</Text>
+                                                                    {i18next.language == "en" && <Text style={{
                                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                                         fontSize: vs(17),
                                                                         lineHeight: 40,
                                                                         textAlignVertical: 'top',
                                                                     }}>®
-                                                                    </Text>
+                                                                    </Text>}
                                                                 </View>
-                                                                <View style={{ flexDirection: "row", marginTop: -20 }}>
-                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Interactions</Text>
+                                                                <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row", marginTop: -20 }}>
+                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('interaction')}</Text>
                                                                     <Text style={{
                                                                         fontFamily: FONTS.h1, color: COLORS.primary,
                                                                         fontSize: vs(13),
