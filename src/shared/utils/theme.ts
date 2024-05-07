@@ -270,6 +270,7 @@ export const ICONS: ThemeIcons = {
   lunch_time: require('../../assets/icons/lunch_time.png'),
   breakfast_time: require('../../assets/icons/breakfast_time.png'),
   cross: require('../../assets/icons/cross.png'),
+  brand: require('../../assets/icons/brand.png'),
   //   cart_plus: require('../../assets/icons/cart_plus.png'),
   //   minus: require('../../assets/icons/minus.png'),
   //   cart_minus: require('../../assets/icons/cart_minus.png'),

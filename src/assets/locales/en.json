@@ -4,6 +4,8 @@
     "skip":"Skip",
     "next":"Next",
     "ok":"OK",
+    "ok2":"OK",
+    "proceed2":"Proceed",
     "lets-start":"Lets Start",
     "your-recovery-portal": "Your Recovery Portal",
     "welcome-to-eradicate": "Welcome to Eradicate, your recovery partner",
@@ -90,6 +92,7 @@
     "agreement":"I have clearly read and understood the above.",
     "proceed":"PROCEED TO VIEW CONTENT",
     "pylera":"PYLERA",
+    "pylera0":"PYLERA",
     "trade-mark":"®",
     "indication-n-usage":"Indication & Usage",
     "sup-6":"18",
@@ -225,6 +228,8 @@
     "disclaimers-des-1":"In the event of an adverse event occurring from any of the NewBridge Pharmaceuticals licensed products, kindly report them to the NewBridge Safety Mailbox: ",
     "disclaimers-des-mail":"safety@nbpharma.com",
     "disclaimers-des-2":"Full prescribing information is available upon request.",
-    "disclaimers-des-3":"This material is intended for educational purposes only. Information about medicinal product is intended only for patients who have been prescribed this medication."
-    
+    "disclaimers-des-3":"This material is intended for educational purposes only. Information about medicinal product is intended only for patients who have been prescribed this medication.",
+    "seconds":"Seconds",
+    "minutes":"Minutes",
+    "hours":"Hours"
 }

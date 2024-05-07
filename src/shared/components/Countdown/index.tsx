@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import moment from 'moment';
 import { COLORS, FONTS } from '../../utils/theme';
-import { scale, verticalScale } from 'react-native-size-matters';
+import { scale, verticalScale, vs } from 'react-native-size-matters';
+import i18next, { t } from 'i18next';
 
 interface CountdownProps {
     savedTime: string;
@@ -68,13 +69,16 @@ const Countdown: React.FC<CountdownProps> = ({ savedTime }) => {
 
         } else {
             return (
-                <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", flex: 1, }}>
+                <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "center", }}>
                     <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{'00'}</Text>
+                    {/* <View style={{}}>
+                        <Text style={{ position: "absolute", marginTop: 30, fontFamily: FONTS.bold, color: COLORS.danger, fontSize: verticalScale(18) }}>{'00'}</Text>
+                    </View> */}
                     <View style={{ marginHorizontal: scale(8), flexDirection: "column", }} >
                         <View style={{ width: 7, height: 7, backgroundColor: COLORS.primary, borderRadius: 50, marginBottom: scale(2) }} />
                         <View style={{ width: 7, height: 7, backgroundColor: COLORS.primary, borderRadius: 50 }} />
                     </View>
-                    <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{'00'}</Text>
+                    <Text style={{ flex: 1, fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{'00'}</Text>
                     <View style={{ marginHorizontal: scale(8), flexDirection: "column" }} >
                         <View style={{ width: 7, height: 7, backgroundColor: COLORS.primary, borderRadius: 50, marginBottom: scale(2) }} />
                         <View style={{ width: 7, height: 7, backgroundColor: COLORS.primary, borderRadius: 50 }} />
@@ -87,7 +91,12 @@ const Countdown: React.FC<CountdownProps> = ({ savedTime }) => {
 
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-            <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{getTime()}</Text>
+            <View>
+                <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{getTime()}</Text>
+                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(117) : 0, bottom: vs(-3), color: COLORS.white }}>{t('seconds')}</Text>}
+                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(62) : 0, bottom: vs(-3), color: COLORS.white }}>{t('minutes')}</Text>}
+                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(5) : 0, bottom: vs(-3), color: COLORS.white }}>{t('hours')}</Text>}
+            </View>
         </View>
     );
 };

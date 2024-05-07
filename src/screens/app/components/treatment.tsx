@@ -49,7 +49,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     } = useTreatment()
 
 
-    const monthNames: string[] = [
+    const monthNames: string[] = i18next.language === "ar" ? ["يناير", "فبراير", "مارس", "ابريل", "مايو", "يونيو", "يوليو", "اغسطس", "سبتمبر", "اكتوبر", "نوفمبر", "ديسمبر"] : [
         'January', 'February', 'March', 'April',
         'May', 'June', 'July', 'August',
         'September', 'October', 'November', 'December'
@@ -68,7 +68,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
     const currentYear = currentDate.getFullYear();
 
     function getDaysOfMonth(month: number, year: number): { day: string; date: number }[] {
-        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const daysOfWeek = i18next.language === "ar" ? ["الاثنين", "الثلاثاء", "الاربعاء", "الخميس", "الجمعة", "السبت", "الاحد"] : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
         const days: { day: string; date: number }[] = [];
 
@@ -185,6 +185,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
             <AlertModal isVisible={visible} setVisible={setVisible} title={t('alert')} text={t('alart-para-1')} onPress={handleModalPressed} />
             <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={t('alert')} text={t('alart-para-2')} onPress={handleProceedModalPressed} />
+            <AlertModal isVisible={isVisible} setVisible={setIsVisible} title={t('alert')} text={t('alart-para-2')} onPress={() => setIsVisible(false)} onPress2={handleProceedModalPressed} isSecondButton={true} />
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 {proceed === false ?
                     <>
@@ -192,7 +193,12 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                             <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                             <Image source={ICONS.caution} style={{ width: scale(280), height: vs(160), resizeMode: "contain", alignSelf: "center", marginVertical: vs(20) }} />
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
-                                <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === 'ar' ? 'right' : "justify" }}>{t('agreement2')}</Text>
+                                <View>
+                                    {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8 }}>{t('contraindications-para')}</Text> */}
+                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.h1, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === 'ar' ? 'right' : "justify" }}>{t('agreement2')}</Text>
+                                    {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(28) : 0, bottom: vs(10), color: COLORS.secondary }}>{'®️'}</Text>}
+                                    {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(43) : 0, bottom: vs(10), color: COLORS.secondary }}>{'®️'}</Text>}
+                                </View>
                             </View>
                             <View style={{ flexDirection: i18next.language === 'ar' ? 'row-reverse' : "row", alignItems: "center", marginTop: 30 }}>
                                 <CheckBox
@@ -223,7 +229,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                             <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, paddingHorizontal: 30, alignItems: i18next.language === 'ar' ? 'flex-end' : 'flex-start' }}>
                                 <Pressable onPress={() => navigation.goBack()} style={{ alignSelf: i18next.language === "ar" ? "flex-start" : "flex-end", marginTop: 15 }}><Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(13) }}>{t('back')}</Text></Pressable>
                                 <Image source={ICONS.caution} style={{ width: scale(200), height: vs(100), resizeMode: "contain", alignSelf: "center", }} />
-                                <View style={{ flexDirection: "row", marginTop: vs(10), marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
+                                <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : "row", marginTop: vs(10), marginBottom: i18next.language === 'ar' ? 5 : 0 }}>
                                     <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.h1, color: COLORS.secondary, fontSize: vs(13), }}>{t('medical-heading')}</Text>
                                     <Text style={{
                                         fontFamily: FONTS.h1, color: COLORS.secondary,
@@ -280,8 +286,8 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </View>
                                                     <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                                         <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8, marginBottom: i18next.language === 'ar' ? 5 : 0 }}>{t('date-time-para')}</Text>
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
-                                                        <Text style={styles.month}>{i18next.language === "ar" ? "" : `${currentMonth}, ${currentYear}`}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: -5 }}>{t('date-time-heading')}</Text>
+                                                        <Text style={styles.month}>{`${currentMonth}, ${currentYear}`}</Text>
                                                         <FlatList
                                                             contentContainerStyle={{ height: vs(55), }}
                                                             showsHorizontalScrollIndicator={false}
@@ -294,7 +300,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         onPress={() => { setSelectDate(item?.date), setTreatmentData({ ...treatmentData, selectDate: item?.date }) }}
                                                                         style={[styles.dateView, { backgroundColor: item?.date === treatmentData.selectDate ? COLORS.primary : COLORS.white }]}
                                                                     >
-                                                                        <Text style={[styles.day, { color: item?.date === treatmentData.selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.day.slice(0, 3)}</Text>
+                                                                        <Text style={[styles.day, { color: item?.date === treatmentData.selectDate ? COLORS.white : COLORS.borderColor }]}>{i18next.language == "ar" ? item?.day : item?.day?.slice(0, 3)}</Text>
                                                                         <Text style={[styles.date, { color: item?.date === treatmentData.selectDate ? COLORS.white : COLORS.borderColor }]}>{item?.date}</Text>
                                                                     </TouchableOpacity>
                                                                 )
@@ -444,59 +450,59 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     </>
                                                     : index === 3 ?
                                                         <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
-                                                            {/* <View style={{ flexDirection: "row" }}>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>PYLERA</Text>
-                                                                    <Text style={{
-                                                                        fontFamily: FONTS.h1, color: COLORS.primary,
-                                                                        fontSize: vs(17),
-                                                                        lineHeight: 40,
-                                                                        textAlignVertical: 'top',
-                                                                    }}>®
-                                                                    </Text>
-                                                                </View>
-                                                                <View style={{ flexDirection: "row", }}>
-                                                                    <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>Dose Education</Text>
-                                                                    <Text style={{
-                                                                        fontFamily: FONTS.h1, color: COLORS.primary,
-                                                                        fontSize: vs(13),
-                                                                        lineHeight: 40,
-                                                                        textAlignVertical: 'top',
-                                                                    }}>20
-                                                                    </Text>
-                                                                </View>
-                                                            </View> */}
-                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? -0 : -8 }}>{t('administrator')}</Text>
-                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
+
+                                                            <View>
+                                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? -0 : -8 }}>{t('administrator')}</Text>
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(172) : 0, top: vs(0), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(110) : 0, bottom: vs(8), color: COLORS.secondary }}>{'18'}</Text>}
+                                                            </View>
+                                                            <View>
+                                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? 5 : -8 }}>{t('administrator2')}</Text>
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(68) : 0, top: vs(20), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(18) : 0, bottom: vs(8), color: COLORS.secondary }}>{'18'}</Text>}
+                                                            </View>
+                                                            <View>
+                                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(132) : 0, top: vs(3), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {/* {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(18) : 0, bottom: vs(8), color: COLORS.secondary }}>{'18'}</Text>} */}
+                                                            </View>
                                                             <View style={styles.table}>
-                                                                <View style={styles.row}>
+                                                                <View style={[styles.row, { flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 10, color: COLORS.white }]}>{t('table-heading-1')}</Text>
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>{t('table-heading-2')}</Text>
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>{t('table-heading-3')}</Text>
                                                                 </View>
-                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
+                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-1')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>1</Text>
                                                                 </View>
-                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
+                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-2')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>0</Text>
                                                                 </View>
-                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
+                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-3')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>1</Text>
                                                                 </View>
-                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
+                                                                <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-4')}</Text>
                                                                     <Text style={styles.cell}>3</Text>
                                                                     <Text style={styles.cell}>0</Text>
                                                                 </View>
                                                             </View>
-                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
-                                                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
+                                                            <View>
+                                                                {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8 }}>{t('contraindications-para')}</Text> */}
+                                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(63) : 0, top: vs(5), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(62) : 0, bottom: vs(6), color: COLORS.secondary }}>{'18'}</Text>}
+                                                            </View>
+                                                            <View>
+                                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(72) : 0, top: vs(9), color: COLORS.secondary }}>{'18'}</Text>}
+                                                            </View>
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
                                                         </View>
                                                         : null
@@ -526,7 +532,7 @@ const styles = ScaledSheet.create({
         marginTop: '12@vs'
     },
     row: {
-        flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row',
+        // flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row',
         alignItems: "center",
     },
     cell: {

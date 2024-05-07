@@ -343,6 +343,7 @@ export interface ThemeIcons {
     lunch_time: ImageSourcePropType;
     breakfast_time: ImageSourcePropType;
     cross: ImageSourcePropType;
+    brand: ImageSourcePropType;
     //   plus: ImageSourcePropType;
     //   minus: ImageSourcePropType;
     //   cart_plus: ImageSourcePropType;

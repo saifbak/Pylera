@@ -76,8 +76,8 @@ const Home = () => {
                                 <Image source={ICONS.h_dose} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
                             <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("dose")}</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t('tracking')}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("dose")}</Text>
+                                <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('tracking')}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>

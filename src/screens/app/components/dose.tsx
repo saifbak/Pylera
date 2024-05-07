@@ -95,7 +95,10 @@ const Dose: React.FC<{ navigation: any }> = ({ navigation }) => {
                     </TouchableOpacity>
                     <View style={{ backgroundColor: COLORS.white, }}>
                         <View style={{ flexDirection: "row", alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start" }}>
-                            <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(16), textAlign: i18next.language === "ar" ? 'right' : 'left' }}>{t('todays')}</Text>
+                            <View>
+                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(16), textAlign: i18next.language === "ar" ? 'right' : 'left' }}>{t('todays')}</Text>
+                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(3) : 0, top: vs(0), color: COLORS.primary }}>®️</Text>}
+                            </View>
                         </View>
                         <MedicineTakingTracker
                             breakfastTime={breakfastTime}

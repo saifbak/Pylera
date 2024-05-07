@@ -15,6 +15,8 @@ type AlertModalProps = {
     setVisible: React.Dispatch<React.SetStateAction<boolean>>;
     text?: string;
     onPress?: () => void;
+    onPress2?: () => void;
+    isSecondButton?: boolean;
 }
 
 
@@ -24,6 +26,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
     setVisible,
     text,
     onPress,
+    onPress2,
+    isSecondButton
 }: AlertModalProps) => {
 
     const { t } = useTranslation()
@@ -44,11 +48,18 @@ const AlertModal: React.FC<AlertModalProps> = ({
                             }]}>{text}</Text>
                         </View>
                     }
-                    <TouchableOpacity
-                        style={{ alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
-                        onPress={onPress}>
-                        <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('ok')} </Text>
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: "row", alignSelf: i18next.language == "ar" ? "flex-start" : "flex-end" }}>
+                        <TouchableOpacity
+                            style={{ alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
+                            onPress={onPress}>
+                            <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{isSecondButton ? t('ok2') : t('ok')} </Text>
+                        </TouchableOpacity>
+                        {isSecondButton && <TouchableOpacity
+                            style={{ marginLeft: 20, alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
+                            onPress={onPress2}>
+                            <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('proceed2')} </Text>
+                        </TouchableOpacity>}
+                    </View>
                 </View>
             </ReactNativeModal>
         </View >
