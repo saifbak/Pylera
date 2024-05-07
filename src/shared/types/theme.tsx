@@ -311,8 +311,11 @@ export interface ThemeIcons {
     cause: ImageSourcePropType;
     infection: ImageSourcePropType;
     dodont: ImageSourcePropType;
+    dodontAr: ImageSourcePropType;
     do: ImageSourcePropType;
+    doAr: ImageSourcePropType;
     dont: ImageSourcePropType;
+    dontAr: ImageSourcePropType;
     cranberry: ImageSourcePropType;
     coffee: ImageSourcePropType;
     broccoli: ImageSourcePropType;

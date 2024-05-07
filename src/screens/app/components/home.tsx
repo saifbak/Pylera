@@ -49,10 +49,16 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_medication} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("guide")}</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('medication')}</Text>
-                            </View>
+                            {i18next.language === "ar" ?
+                                <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("guide")}</Text>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('medication')}</Text>
+                                </View>
+                                :
+                                <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t('medication')}</Text>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t("guide")}</Text>
+                                </View>}
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -62,12 +68,15 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_treatment} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                            {i18next.language === "ar" ? <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
                                 <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("treatment")}</Text>
                                 <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('plan')}</Text>
-                                {/* <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("treatment")}</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t('plan')}</Text> */}
                             </View>
+                                :
+                                <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("treatment")}</Text>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t('plan')}</Text>
+                                </View>}
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('DoseScreens')} activeOpacity={0.7} style={{ backgroundColor: COLORS.metalic_grey, width: scale(110), height: vs(130), borderRadius: scale(22) }}>
@@ -75,10 +84,16 @@ const Home = () => {
                             <View>
                                 <Image source={ICONS.h_dose} style={{ width: scale(50), height: vs(50), resizeMode: "contain" }} />
                             </View>
-                            <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("dose")}</Text>
-                                <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('tracking')}</Text>
-                            </View>
+                            {i18next.language === "ar" ?
+                                <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("dose")}</Text>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, }}>{t('tracking')}</Text>
+                                </View> :
+                                <View style={{ flexDirection: "column", justifyContent: "space-evenly", width: scale(90) }}>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, marginBottom: i18next.language === "ar" ? 0 : vs(-6), marginTop: 10 }}>{t("dose")}</Text>
+                                    <Text style={{ color: COLORS.secondary, fontSize: vs(9), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, }}>{t('tracking')}</Text>
+                                </View>
+                            }
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -86,8 +101,8 @@ const Home = () => {
                     style={{ color: COLORS.secondary, fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, fontSize: vs(10) }}
                     onPress={() => navigation.navigate('References')}
                 >{t("disclaimer-n-references")}</Text>
-            </View>
-        </View>
+            </View >
+        </View >
     )
 };
 
