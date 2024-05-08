@@ -39,7 +39,7 @@ export default () => {
 
     useEffect(() => {
 
-        AsyncStorage.clear();
+        // AsyncStorage.clear();
 
         AsyncStorage.multiGet(['@onboarding', '@selectedLanguage']).then((values) => {
             const onboardingValue = values[0][1];
