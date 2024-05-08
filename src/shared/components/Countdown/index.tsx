@@ -93,8 +93,11 @@ const Countdown: React.FC<CountdownProps> = ({ savedTime }) => {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
             <View>
                 <Text style={{ fontFamily: FONTS.bold, color: COLORS.white, fontSize: verticalScale(28) }}>{getTime()}</Text>
+                {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "en" ? scale(108) : 0, bottom: vs(-3), color: COLORS.white }}>{t('seconds')}</Text>}
                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(117) : 0, bottom: vs(-3), color: COLORS.white }}>{t('seconds')}</Text>}
+                {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "en" ? scale(55) : 0, bottom: vs(-3), color: COLORS.white }}>{t('minutes')}</Text>}
                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(62) : 0, bottom: vs(-3), color: COLORS.white }}>{t('minutes')}</Text>}
+                {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "en" ? scale(3) : 0, bottom: vs(-3), color: COLORS.white }}>{t('hours')}</Text>}
                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(10), left: i18next.language === "ar" ? scale(5) : 0, bottom: vs(-3), color: COLORS.white }}>{t('hours')}</Text>}
             </View>
         </View>
