@@ -32,7 +32,17 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DroidSansArabic.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>SegoeUI-Bold.ttf</string>
+		<string>SegoeUI-SemiBold.ttf</string>
+		<string>SegoeUI.ttf</string>
+		<string>أندرويد سانس عربي.ttf</string>
+		<string>SegoeUI-SemiLight.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -47,15 +57,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>DroidSansArabic.ttf</string>
-		<string>Poppins-Medium.ttf</string>
-		<string>SegoeUI-Bold.ttf</string>
-		<string>SegoeUI-SemiBold.ttf</string>
-		<string>SegoeUI.ttf</string>
-		<string>أندرويد سانس عربي.ttf</string>
-		<string>SegoeUI-SemiLight.ttf</string>
-	</array>
 </dict>
 </plist>

@@ -24,6 +24,7 @@ const References: FC<referenceProps> = ({ navigation }) => {
                 </Pressable>
                 <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: "#af0f10", fontSize: vs(14), marginTop: vs(20) }}>{t('references')}</Text>
                 <ScrollView style={{ width: '100%', marginVertical: 20, padding: 20, paddingBottom: 30 }}>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(16), textAlign: "justify" }}>{'Adapted From:'}</Text>
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point1')}</Text>
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point2')}</Text>
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point3')}</Text>

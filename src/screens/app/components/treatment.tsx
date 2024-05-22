@@ -465,7 +465,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             <View>
                                                                 {i18next.language === "ar" && <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? 5 : -8 }}>{t('administrator2')}</Text>}
                                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(68) : 0, top: vs(20), color: COLORS.secondary }}>{`®️`}</Text>}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(195) : 0, top: vs(2.5), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {/* {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(195) : 0, top: vs(2.5), color: COLORS.secondary }}>{'®️'}</Text>} */}
                                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(18) : 0, bottom: vs(8), color: COLORS.secondary }}>{'18'}</Text>}
                                                             </View>
                                                             <View>
@@ -483,38 +483,38 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.white }]}>{t('table-heading-2')}</Text>
                                                                     {i18next.language === "en" && <Text style={{ zIndex: 2, position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(38) : 0, top: vs(16.5), color: COLORS.white }}>{`®`}</Text>}
-                                                                    {i18next.language === "ar" && <Text style={{ zIndex: 2, position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(46) : 0, top: vs(14), color: COLORS.white }}>{`®`}</Text>}
+                                                                    {/* {i18next.language === "ar" && <Text style={{ zIndex: 2, position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(46) : 0, top: vs(14), color: COLORS.white }}>{`®`}</Text>} */}
 
                                                                     <Text style={[styles.cell, { backgroundColor: COLORS.primary, padding: 5, color: COLORS.white }]}>{t('table-heading-3')}</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-1')}</Text>
-                                                                    <Text style={styles.cell}>3</Text>
-                                                                    <Text style={styles.cell}>1</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '3' : '٣'}</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '1' : '١'}</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-2')}</Text>
-                                                                    <Text style={styles.cell}>3</Text>
-                                                                    <Text style={styles.cell}>0</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '3' : '٣'}</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '0' : '٠'}</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-3')}</Text>
-                                                                    <Text style={styles.cell}>3</Text>
-                                                                    <Text style={styles.cell}>1</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '3' : '٣'}</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '1' : '١'}</Text>
                                                                 </View>
                                                                 <View style={[styles.row, { borderBottomWidth: .8, borderBottomColor: COLORS.primary, flexDirection: i18next.language === "ar" ? 'row-reverse' : 'row', }]}>
                                                                     <Text style={styles.cell}>{t('table-1-data-4')}</Text>
-                                                                    <Text style={styles.cell}>3</Text>
-                                                                    <Text style={styles.cell}>0</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '3' : '٣'}</Text>
+                                                                    <Text style={styles.cell}>{i18next.language === "en" ? '0' : '٠'}</Text>
                                                                 </View>
                                                             </View>
                                                             <View>
                                                                 {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -8 }}>{t('contraindications-para')}</Text> */}
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-para-2')}</Text>
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(84) : 0, top: vs(6), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(63) : 0, top: vs(5), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(152) : 0, top: vs(5), color: COLORS.secondary }}>{'®️'}</Text>}
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(74) : 0, bottom: vs(10), color: COLORS.secondary }}>{'18'}</Text>}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(62) : 0, bottom: vs(6), color: COLORS.secondary }}>{'18'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(170) : 0, bottom: vs(6), color: COLORS.secondary }}>{'18'}</Text>}
                                                             </View>
                                                             <View>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>

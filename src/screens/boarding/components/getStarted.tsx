@@ -28,9 +28,9 @@ const GetStarted = () => {
             <StatusBar barStyle={"light-content"} backgroundColor={'#4597cf'} />
             <View style={styles.body}>
                 <View style={styles.indicator} />
-                <View style={{ backgroundColor: '#1d3660', width: scale(30), height: verticalScale(30), borderRadius: 100, position: "absolute", top: 20, left: 40 }} />
-                <View style={{ backgroundColor: '#4597cf', width: scale(70), height: verticalScale(70), borderRadius: 100, position: "absolute", top: 100, right: -50 }} />
-                <View style={{ backgroundColor: '#1d3660', width: scale(100), height: verticalScale(100), borderRadius: 100, position: "absolute", bottom: -35, left: -35 }} />
+                <View style={{ backgroundColor: '#1d3660', width: scale(30), height: scale(30), borderRadius: 100, position: "absolute", top: 20, left: 40 }} />
+                <View style={{ backgroundColor: '#4597cf', width: scale(70), height: scale(70), borderRadius: 100, position: "absolute", top: 100, right: -50 }} />
+                <View style={{ backgroundColor: '#1d3660', width: scale(100), height: scale(100), borderRadius: 100, position: "absolute", bottom: -35, left: -35 }} />
                 <View style={{ flex: 1, justifyContent: "center", }}>
                     <View style={{ justifyContent: "center", alignSelf: "center", marginTop: vs(-140), }}>
                         <Image source={ICONS.logo} style={{ width: scale(270), height: vs(260), resizeMode: "contain", marginBottom: vs(-40), alignSelf: "center" }} />

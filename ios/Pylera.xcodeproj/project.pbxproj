@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PyleraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PyleraTests.m */; };
+		04AD85C5114E4B618B521C29 /* أندرويد سانس عربي.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-Pylera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Pylera.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-Pylera-PyleraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Pylera-PyleraTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		3671C371E06D4B2299C9CB0F /* DroidSansArabic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC19BDDBED1A4509B43E5632 /* DroidSansArabic.ttf */; };
 		377BAC62605D498097FDE872 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26132EDCD32C464A9D1B4108 /* Poppins-Medium.ttf */; };
 		56E377C3DB7A42F3AA0F0892 /* SegoeUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD4F910B7D744E369886B234 /* SegoeUI-Bold.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-Pylera-PyleraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Pylera-PyleraTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BDCDE698615242F1940A5672 /* SegoeUI-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C884741B6A641E880D7B9F6 /* SegoeUI-SemiBold.ttf */; };
-		F64E2EDF62814A7BA044A01B /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */; };
-		04AD85C5114E4B618B521C29 /* أندرويد سانس عربي.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */; };
 		BF3730065C5445B6864EDDD7 /* SegoeUI-SemiLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D22554BE3794C13B650E963 /* SegoeUI-SemiLight.ttf */; };
+		F64E2EDF62814A7BA044A01B /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,20 +44,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pylera/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Pylera/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Pylera-PyleraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pylera-PyleraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		26132EDCD32C464A9D1B4108 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = SegoeUI.ttf; path = ../assets/fonts/SegoeUI.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Pylera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pylera.debug.xcconfig"; path = "Target Support Files/Pods-Pylera/Pods-Pylera.debug.xcconfig"; sourceTree = "<group>"; };
+		3D22554BE3794C13B650E963 /* SegoeUI-SemiLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SegoeUI-SemiLight.ttf"; path = "../assets/fonts/SegoeUI-SemiLight.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Pylera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pylera.release.xcconfig"; path = "Target Support Files/Pods-Pylera/Pods-Pylera.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Pylera-PyleraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pylera-PyleraTests.debug.xcconfig"; path = "Target Support Files/Pods-Pylera-PyleraTests/Pods-Pylera-PyleraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Pylera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pylera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C884741B6A641E880D7B9F6 /* SegoeUI-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SegoeUI-SemiBold.ttf"; path = "../assets/fonts/SegoeUI-SemiBold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Pylera/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Pylera-PyleraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pylera-PyleraTests.release.xcconfig"; path = "Target Support Files/Pods-Pylera-PyleraTests/Pods-Pylera-PyleraTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "أندرويد سانس عربي.ttf"; path = "../assets/fonts/أندرويد سانس عربي.ttf"; sourceTree = "<group>"; };
+		DD4F910B7D744E369886B234 /* SegoeUI-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SegoeUI-Bold.ttf"; path = "../assets/fonts/SegoeUI-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FC19BDDBED1A4509B43E5632 /* DroidSansArabic.ttf */ = {isa = PBXFileReference; name = "DroidSansArabic.ttf"; path = "../assets/fonts/DroidSansArabic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26132EDCD32C464A9D1B4108 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DD4F910B7D744E369886B234 /* SegoeUI-Bold.ttf */ = {isa = PBXFileReference; name = "SegoeUI-Bold.ttf"; path = "../assets/fonts/SegoeUI-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6C884741B6A641E880D7B9F6 /* SegoeUI-SemiBold.ttf */ = {isa = PBXFileReference; name = "SegoeUI-SemiBold.ttf"; path = "../assets/fonts/SegoeUI-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */ = {isa = PBXFileReference; name = "SegoeUI.ttf"; path = "../assets/fonts/SegoeUI.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */ = {isa = PBXFileReference; name = "أندرويد سانس عربي.ttf"; path = "../assets/fonts/أندرويد سانس عربي.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3D22554BE3794C13B650E963 /* SegoeUI-SemiLight.ttf */ = {isa = PBXFileReference; name = "SegoeUI-SemiLight.ttf"; path = "../assets/fonts/SegoeUI-SemiLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FC19BDDBED1A4509B43E5632 /* DroidSansArabic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = DroidSansArabic.ttf; path = ../assets/fonts/DroidSansArabic.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +120,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6D52E89867024902B0008EB1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC19BDDBED1A4509B43E5632 /* DroidSansArabic.ttf */,
+				26132EDCD32C464A9D1B4108 /* Poppins-Medium.ttf */,
+				DD4F910B7D744E369886B234 /* SegoeUI-Bold.ttf */,
+				6C884741B6A641E880D7B9F6 /* SegoeUI-SemiBold.ttf */,
+				2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */,
+				A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */,
+				3D22554BE3794C13B650E963 /* SegoeUI-SemiLight.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,21 +177,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		6D52E89867024902B0008EB1 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				FC19BDDBED1A4509B43E5632 /* DroidSansArabic.ttf */,
-				26132EDCD32C464A9D1B4108 /* Poppins-Medium.ttf */,
-				DD4F910B7D744E369886B234 /* SegoeUI-Bold.ttf */,
-				6C884741B6A641E880D7B9F6 /* SegoeUI-SemiBold.ttf */,
-				2B6D421D4AA1466BAFD008AB /* SegoeUI.ttf */,
-				A0706E4E2CCA4FEF98E51031 /* أندرويد سانس عربي.ttf */,
-				3D22554BE3794C13B650E963 /* SegoeUI-SemiLight.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -581,7 +581,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -609,6 +609,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -616,7 +617,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -653,7 +660,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -673,6 +680,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -680,7 +688,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
