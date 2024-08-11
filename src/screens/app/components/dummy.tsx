@@ -178,7 +178,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     <Text style={styles.cell}>1</Text>
                                                 </View>
                                                 <View style={[styles.row, { flexDirection: i18next.language === "ar" ? "row-reverse" : "row", borderBottomWidth: .8, borderBottomColor: COLORS.primary }]}>
-                                                    <Text style={styles.cell}>{t('table-1-data-4')}e</Text>
+                                                    <Text style={styles.cell}>{t('table-1-data-4')}</Text>
                                                     <Text style={styles.cell}>3</Text>
                                                     <Text style={styles.cell}>0</Text>
                                                 </View>

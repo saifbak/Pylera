@@ -309,7 +309,9 @@ export interface ThemeIcons {
     factsAR: ImageSourcePropType;
     symptoms: ImageSourcePropType;
     cause: ImageSourcePropType;
+    causeAr: ImageSourcePropType;
     infection: ImageSourcePropType;
+    infectionAr: ImageSourcePropType;
     dodont: ImageSourcePropType;
     dodontAr: ImageSourcePropType;
     do: ImageSourcePropType;

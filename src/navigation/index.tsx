@@ -10,7 +10,6 @@ import GetStarted from '../screens/boarding/components/getStarted'
 
 export default () => {
     const [busy, setBusy] = useState<boolean>(false);
-    const [isAuth, setIsAuth] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
     const [onboarding, setOnboarding] = useState<string>('');

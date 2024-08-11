@@ -1,4 +1,4 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
 import { ScaledSheet, scale, vs } from 'react-native-size-matters'
 import { COLORS, FONTS, ICONS } from '../../../shared/utils/theme'
@@ -42,21 +42,37 @@ const References: FC<referenceProps> = ({ navigation }) => {
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point15')}</Text>
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point16')}</Text>
                     <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point17')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point18')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point19')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point20')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point21')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point22')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point23')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point24')}</Text>
+                    <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point25')}</Text>
                     <View>
                         <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point18')}</Text>
-                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? 164 : 0, top: -2, color: COLORS.secondary }}>{'®️'}</Text>}
-                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? 165 : 0, top: 2, color: COLORS.secondary }}>{'®️'}</Text>}
+                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? 74 : 0, top: -2, color: COLORS.secondary }}>{'®️'}</Text>}
+                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? 71 : 0, top: 2, color: COLORS.secondary }}>{'®️'}</Text>}
                     </View>
                     {/* <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point19')}</Text> */}
                     {/* <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: "justify" }}>{t('references-point20')}</Text> */}
                     <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: "#af0f10", fontSize: vs(14), marginVertical: vs(10) }}>{t('disclaimers')}</Text>
 
                     <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-1')}</Text>
-                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-mail')}</Text>
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-mail')}</Text>
                     <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-2')}</Text>
+                    {i18next.language === "ar" && <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-4')}</Text>}
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.primary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-mail-address')}</Text>
+                    <View>
+                        <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify" }}>{t('disclaimers-des-2o')}</Text>
+                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(193) : 0, top: vs(36), color: COLORS.secondary }}>{'®️'}</Text>}
+                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(208) : 0, top: vs(18), color: COLORS.secondary }}>{'®️'}</Text>}
+                    </View>
                     <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: 20 }}>{t('disclaimers-des-3')}</Text>
                     <Image source={ICONS.brand} style={{ width: '100%', height: 100, resizeMode: "contain", marginTop: -10 }} />
                     {/* {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? 165 : 0, top: 2, color: COLORS.secondary }}>{'www.nbpharma.com'}</Text>} */}
+                    <Text style={{ alignSelf: i18next.language === "ar" ? "flex-end" : "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: 20 }}>{t('disclaimers-des-4')}</Text>
 
                 </ScrollView>
                 <Text style={{ alignSelf: "flex-start", fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "justify", writingDirection: "rtl", transform: [{ rotate: '270deg' }], bottom: 120, left: scale(-65) }}>{'PYL-NBP-20-APR-2024'}</Text>
