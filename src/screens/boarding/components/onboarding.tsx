@@ -52,44 +52,43 @@ const Onboarding = ({ navigation }: any) => {
                     {detailsContent.map((detail, index) => (
                         <View key={index} style={{ flex: 1, }}>
                             {index === 0 ?
-                                <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
+                                <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: (15), }}>
                                     <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                         <View style={{ width: scale(70) }} />
+                                        {/* <View style={styles.indicator} /> */}
                                         <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                             <Text style={{ color: '#4597cf', fontSize: verticalScale(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium }}>{t('skip')}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    <View style={{ justifyContent: "space-around", height: vs(100), alignItems: "center" }}>
+                                    <View style={{ justifyContent: "space-around", height: vs(100) }}>
                                         <View>
-                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, marginBottom: vs(0), marginTop: verticalScale(-10) }}>{t('onboard-heading-2')}</Text>
-                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: 0, width: scale(260) }}>{t("onboard-para-2")}</Text>
+                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, marginBottom: vs(0), marginTop: vs(-10) }}>{t('onboard-heading-3')}</Text>
+                                            <Text style={{ textAlign: "center", color: '#1d3660', fontSize: i18next.language === "ar" ? verticalScale(10) : verticalScale(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: 0 }}>{t('onboard-para-3')}</Text>
                                         </View>
                                     </View>
                                     <View style={{ justifyContent: "center", alignSelf: "center", }}>
-                                        <Image source={ICONS.ob2} style={{ width: scale(420), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
+                                        <Image source={ICONS.ob3} style={{ width: scale(420), height: scale(420), resizeMode: "contain", alignSelf: "center" }} />
                                     </View>
                                 </View>
                                 : index === 1 ?
-
-
-                                    <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: (15), }}>
+                                    <View style={{ flex: 1, backgroundColor: COLORS.white, borderRadius: 30, padding: scale(15), }}>
                                         <View style={{ flexDirection: i18next.language == "ar" ? "row-reverse" : 'row', alignItems: "center", justifyContent: "space-between", }}>
                                             <View style={{ width: scale(70) }} />
-                                            {/* <View style={styles.indicator} /> */}
                                             <TouchableOpacity style={{ width: scale(45) }} onPress={() => onboard()}>
                                                 <Text style={{ color: '#4597cf', fontSize: verticalScale(13), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.medium }}>{t('skip')}</Text>
                                             </TouchableOpacity>
                                         </View>
-                                        <View style={{ justifyContent: "space-around", height: vs(100) }}>
+                                        <View style={{ justifyContent: "space-around", height: vs(100), alignItems: "center" }}>
                                             <View>
-                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, marginBottom: vs(0), marginTop: vs(-10) }}>{t('onboard-heading-3')}</Text>
-                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: i18next.language === "ar" ? verticalScale(11) : verticalScale(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: 0 }}>{t('onboard-para-3')}</Text>
+                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(23), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.semibold, marginBottom: vs(0), marginTop: verticalScale(-10) }}>{t('onboard-heading-2')}</Text>
+                                                <Text style={{ textAlign: "center", color: '#1d3660', fontSize: verticalScale(12), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, marginBottom: 0, width: scale(260) }}>{t("onboard-para-2")}</Text>
                                             </View>
                                         </View>
                                         <View style={{ justifyContent: "center", alignSelf: "center", }}>
-                                            <Image source={ICONS.ob3} style={{ width: scale(420), height: scale(420), resizeMode: "contain", alignSelf: "center" }} />
+                                            <Image source={ICONS.ob2} style={{ width: scale(420), height: vs(420), resizeMode: "contain", alignSelf: "center" }} />
                                         </View>
                                     </View>
+
                                     : index === 2 ?
 
 

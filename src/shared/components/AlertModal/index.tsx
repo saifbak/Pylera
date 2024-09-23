@@ -17,6 +17,7 @@ type AlertModalProps = {
     onPress?: () => void;
     onPress2?: () => void;
     isSecondButton?: boolean;
+    confirmText?: boolean
 }
 
 
@@ -27,7 +28,9 @@ const AlertModal: React.FC<AlertModalProps> = ({
     text,
     onPress,
     onPress2,
-    isSecondButton
+    isSecondButton,
+    confirmText
+
 }: AlertModalProps) => {
 
     const { t } = useTranslation()
@@ -57,7 +60,7 @@ const AlertModal: React.FC<AlertModalProps> = ({
                         {isSecondButton && <TouchableOpacity
                             style={{ marginLeft: 20, alignSelf: i18next.language === 'ar' ? 'flex-start' : "flex-end" }}
                             onPress={onPress2}>
-                            <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{t('proceed2')} </Text>
+                            <Text style={{ color: COLORS.primary, fontSize: vs(12), fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.bold }}>{confirmText ? t('confirm') : t('proceed2')} </Text>
                         </TouchableOpacity>}
                     </View>
                 </View>

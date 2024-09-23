@@ -59,15 +59,15 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                             fontSize: vs(13),
                                             lineHeight: i18next.language === "ar" ? 25 : 40,
                                             textAlignVertical: 'top',
-                                        }}>1,2
+                                        }}>{i18next.language === "ar" ? '٢،١' : '1,2'}
                                         </Text>
                                     </View>
-                                    {i18next.language === "ar" && <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}>{t('discover-para')}</Text>}
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-para')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-para-2')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-1')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-2')}</Text>
-                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "left" }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t("discover-li-3")}</Text>
+                                    {/* {i18next.language === "ar" && <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}>{t('discover-para')}</Text>} */}
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-para')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-para-2')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-1')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left", marginBottom: 10 }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t('discover-li-2')}</Text>
+                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? "right" : "left" }}><Text style={{ color: COLORS.appgreen }}>• </Text>{t("discover-li-3")}</Text>
                                 </View>
                                 : index === 1 ?
                                     <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
@@ -79,7 +79,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 fontSize: vs(13), // Adjust the font size for superscript
                                                 lineHeight: i18next.language === "ar" ? 25 : 40, // Adjust the line height for superscript
                                                 textAlignVertical: 'top',
-                                            }}>3
+                                            }}>{i18next.language === "ar" ? '٣' : '3'}
                                             </Text>
                                         </View>
                                         <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === "ar" ? "right" : 'justify', marginBottom: 10 }}>{t('symptoms-para')}</Text>
@@ -95,7 +95,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         <View style={{ flex: 1, alignItems: i18next.language === "ar" ? "flex-end" : 'flex-start', backgroundColor: COLORS.white, borderRadius: 30, padding: 20, }}>
                                             <Image source={i18next.language === "ar" ? ICONS.causeAr : ICONS.cause} style={{ width: scale(280), height: vs(200), resizeMode: "contain", alignSelf: "center" }} />
                                             <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
-                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(22) }}>{t('cause')}<View><Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(13), textAlignVertical: 'top', position: "absolute", bottom: vs(5) }}>{t('sup-3')}</Text></View></Text>
+                                                <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: i18next.language == "ar" ? vs(18) : vs(22) }}>{t('cause')}<View><Text style={{ fontFamily: FONTS.h1, color: COLORS.appgreen, fontSize: vs(13), textAlignVertical: 'top', position: "absolute", bottom: vs(5), right: i18next.language === 'ar' ? 5 : -25 }}>{t('sup-3')}</Text></View></Text>
                                             </View>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: "justify", }}>{t('cause-li-heading-1')}</Text>
                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: i18next.language === "ar" ? vs(10) : 0 }}>{t('cause-li-para-1')}</Text>
@@ -115,7 +115,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         lineHeight: i18next.language === "ar" ? 45 : 40, // Adjust the line height for superscript
                                                         textAlignVertical: i18next.language === "ar" ? 'bottom' : "top",
                                                         right: i18next.language === "ar" ? 230 : 0
-                                                    }}>8-12, 18
+                                                    }}>{i18next.language == 'ar' ? '٧-١٢' : '7-12'}
                                                     </Text>
                                                 </View>
                                                 <View style={{ flex: .8, flexDirection: i18next.language === "ar" ? 'row-reverse' : "row", justifyContent: "space-between" }}>

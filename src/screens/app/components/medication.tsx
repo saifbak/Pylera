@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, Button, TouchableOpacity, Image, Pressable } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { COLORS, FONTS, ICONS } from '../../../shared/utils/theme';
@@ -7,6 +7,7 @@ import { ScaledSheet, scale, vs } from 'react-native-size-matters';
 import CheckBox from '@react-native-community/checkbox';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import AlertModal from '../../../shared/components/AlertModal';
 const detailsContent = [
     'Detail 1',
     'Detail 2',
@@ -22,6 +23,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false)
     const [proceed, setProceed] = useState<boolean>(false)
+    const [visible, setVisible] = useState<boolean>(false);
     const handleNext = () => {
         if (currentIndex < detailsContent.length - 1) {
             setCurrentIndex(currentIndex + 1);
@@ -39,9 +41,18 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
         navigation.navigate('Home');
     };
 
+    const handleModalPressed = useCallback(() => {
+        setVisible(false);
+        setProceed(true);
+    }, [visible]);
+
+    const handleModal = useCallback(() => {
+        setVisible(true)
+    }, []);
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
+            <AlertModal isVisible={visible} setVisible={setVisible} title={t('alert')} text={t('alart-para-5')} onPress={() => setVisible(false)} onPress2={handleModalPressed} isSecondButton={true} confirmText={true} />
             <View style={{ flex: 1, borderRadius: 30, marginTop: 40 }}>
                 {proceed === false ?
                     <>
@@ -56,7 +67,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     lineHeight: 35,
                                     textAlignVertical: 'top',
                                     marginLeft: 1
-                                }}>13
+                                }}>{i18next.language === "ar" ? '١٣' : 13}
                                 </Text>}
                             </View>
                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 8 : 0, }}><Text style={{ color: COLORS.secondary }}>• </Text>{t("medical-li-1")}</Text>
@@ -85,7 +96,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                         <View style={{ width: scale(120), position: "absolute", bottom: 30, alignSelf: "center", alignItems: "center" }}>
                             <TouchableOpacity
                                 disabled={!toggleCheckBox}
-                                style={{ backgroundColor: toggleCheckBox === true ? COLORS.primary : COLORS.gray, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={() => setProceed(true)}  >
+                                style={{ backgroundColor: toggleCheckBox === true ? COLORS.primary : COLORS.gray, width: scale(180), height: vs(25), borderRadius: 50, alignItems: "center", justifyContent: "center", marginVertical: 5 }} onPress={handleModal}  >
                                 <Text style={{ color: COLORS.white, fontSize: vs(11), fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold }}>{t('proceed')} </Text>
                             </TouchableOpacity>
                         </View>
@@ -119,7 +130,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('indication-n-usage')}</Text>
                                                 {i18next.language !== "ar" ? <Text style={{
                                                     fontFamily: FONTS.h1, color: COLORS.primary,
-                                                    fontSize: vs(17),
+                                                    fontSize: vs(12),
                                                     lineHeight: 40,
                                                     textAlignVertical: 'top',
                                                 }}>{t('sup-6')}
@@ -169,7 +180,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         lineHeight: 40,
                                                         right: i18next.language === "ar" ? 140 : 0,
                                                         textAlignVertical: i18next.language === "ar" ? 'bottom' : "top",
-                                                    }}>{i18next.language === "ar" ? "13" : "®"}
+                                                    }}>{i18next.language === "ar" ? "١٣" : "®"}
                                                     </Text>}
                                                     {i18next.language !== 'ar' && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{'Dosage'}</Text>}
                                                 </View>
@@ -183,7 +194,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                             lineHeight: 40,
                                                             right: i18next.language === "ar" ? 140 : 0,
                                                             textAlignVertical: i18next.language === "ar" ? 'bottom' : "top",
-                                                        }}>{i18next.language === "ar" ? "13" : "®"}
+                                                        }}>{i18next.language === "ar" ? "١٣" : "®"}
                                                         </Text>}
                                                         {i18next.language !== 'ar' && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{' '}{' '}{'Dosage'}</Text>}
                                                     </View>
@@ -192,10 +203,10 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                     {i18next.language !== 'ar' && <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{'and Administration'}</Text>}
                                                     {<Text style={{
                                                         fontFamily: FONTS.h1, color: COLORS.primary,
-                                                        fontSize: vs(13),
+                                                        fontSize: vs(12),
                                                         lineHeight: 40,
                                                         textAlignVertical: 'top',
-                                                    }}>{i18next.language !== "ar" ? "13" : ""}
+                                                    }}>{i18next.language !== "ar" ? "١٣" : ""}
                                                     </Text>}
                                                 </View>
                                             </View>
@@ -250,7 +261,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                 <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 10, marginBottom: i18next.language === 'ar' ? 10 : 0 }}>{t('dose-para-2')}</Text>
                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(151) : 0, top: vs(6), color: COLORS.secondary }}>{'®️'}</Text>}
                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(83) : 0, top: vs(10), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(7), right: i18next.language === "ar" ? scale(169) : 0, top: vs(58), color: COLORS.secondary }}>{'18'}</Text>}
+                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(7), right: i18next.language === "ar" ? scale(169) : 0, top: vs(58), color: COLORS.secondary }}>{'١٣'}</Text>}
                                             </View>
                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: 5, marginBottom: i18next.language === 'ar' ? 8 : 0 }}>{i18next.language === "en" ? t('dose-heading-2') : t('dose-heading-3')}</Text>
                                             <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}>{t('dose-para-3')}</Text>
@@ -273,10 +284,10 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                         <Text style={{ fontFamily: FONTS.h1, color: COLORS.primary, fontSize: vs(22) }}>{t('adverse-heading')}</Text>
                                                         <Text style={{
                                                             fontFamily: FONTS.h1, color: COLORS.primary,
-                                                            fontSize: vs(13),
+                                                            fontSize: vs(12),
                                                             lineHeight: 40,
                                                             textAlignVertical: 'top',
-                                                        }}>13
+                                                        }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                                         </Text>
                                                     </View>
                                                 </View>
@@ -309,46 +320,46 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 fontSize: vs(12),
                                                                 lineHeight: 40,
                                                                 textAlignVertical: 'top',
-                                                            }}>13
+                                                            }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                                             </Text>
                                                         </View>
                                                     </View>
-                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}>{t('patient-heading-1')}</Text>
+                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5, marginBottom: 5 }}>{t('patient-heading-1')}</Text>
                                                     <View>
                                                         {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -10, marginBottom: i18next.language === 'ar' ? 10 : 0 }}>{t('patient-para-1')}</Text>
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(88) : 0, bottom: vs(17), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(86) : 0, bottom: vs(23), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -10, marginBottom: i18next.language === 'ar' ? 5 : 5 }}>{t('patient-para-1')}</Text>
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(88) : 0, bottom: vs(14), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(53) : 0, bottom: vs(28), color: COLORS.secondary }}>{'®️'}</Text>}
                                                     </View>
                                                     <View>
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -10 }}>{t('patient-heading-2')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5, marginBottom: 5 }}>{t('patient-heading-2')}</Text>
                                                         {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(55) : 0, top: vs(15), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(40) : 0, top: vs(15), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(40) : 0, top: vs(30), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(55) : 0, top: vs(17), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(40) : 0, top: vs(18), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(40) : 0, top: vs(34), color: COLORS.secondary }}>{'®️'}</Text>}
                                                     </View>
-                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -10, marginBottom: i18next.language === 'ar' ? 10 : 0 }}>{t('patient-para-2')}</Text>
+                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -10, marginBottom: i18next.language === 'ar' ? 5 : 5 }}>{t('patient-para-2')}</Text>
                                                     <View>
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -10 }}>{t('patient-heading-3')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5, marginBottom: 5 }}>{t('patient-heading-3')}</Text>
                                                         {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(48) : 0, top: vs(30), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(50) : 0, top: vs(12), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(30), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(45), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(48) : 0, top: vs(35), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(50) : 0, top: vs(16), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(33), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(48), color: COLORS.secondary }}>{'®️'}</Text>}
                                                     </View>
-                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -10, marginBottom: i18next.language === 'ar' ? 10 : 0 }}>{t('patient-para-3')}</Text>
-                                                    <View>
-                                                        {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -10 }}>{t('patient-heading-4')}</Text>
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(80) : 0, top: vs(30), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(7) : 0, top: vs(15), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(28), color: COLORS.secondary }}>{'®️'}</Text>}
-                                                    </View>
+                                                    <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -10, marginBottom: i18next.language === 'ar' ? 5 : 5 }}>{t('patient-para-3')}</Text>
                                                     <View>
                                                         {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
-                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -10 }}>{t('patient-para-4')}</Text>
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5, marginBottom: 5 }}>{t('patient-heading-4')}</Text>
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(80) : 0, top: vs(34), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(7) : 0, top: vs(19), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "en" ? scale(104) : 0, top: vs(32), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                    </View>
+                                                    <View>
+                                                        {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(12.5), textAlign: i18next.language === 'ar' ? "right" : "justify", marginTop: 0 }}>{t('dose-para-1')}</Text> */}
+                                                        <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? -5 : -10 }}>{t('patient-para-4')}</Text>
                                                         {/* <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: -5 }}>{t('patient-heading-4')}</Text> */}
-                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(148) : 0, top: vs(33), color: COLORS.secondary }}>{'®️'}</Text>}
+                                                        {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(148) : 0, top: vs(28), color: COLORS.secondary }}>{'®️'}</Text>}
                                                     </View>
                                                     {i18next.language == "ar" && <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginTop: i18next.language === 'ar' ? 0 : -10 }}>{t('patient-para-5')}</Text>}
                                                 </View>
@@ -375,7 +386,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     fontSize: vs(13),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
-                                                                }}>13
+                                                                }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                                                 </Text>
                                                             </View>
                                                         </View>
@@ -404,7 +415,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                     fontSize: vs(13),
                                                                     lineHeight: 40,
                                                                     textAlignVertical: 'top',
-                                                                }}>13
+                                                                }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                                                 </Text>
                                                             </View>
                                                         </View>
@@ -451,7 +462,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                         fontSize: vs(13),
                                                                         lineHeight: 40,
                                                                         textAlignVertical: 'top',
-                                                                    }}>13
+                                                                    }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                                                     </Text>
                                                                 </View>
                                                             </View>
@@ -480,7 +491,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? "right" : "justify", marginBottom: -20, marginTop: -5 }}>{t('do-dont-para')}</Text>
                                                                 <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
                                                                     <Image source={i18next.language === "ar" ? ICONS.doAr : ICONS.do} style={{ width: scale(75), height: vs(75), resizeMode: "contain", }} />
-                                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 80, textAlignVertical: 'top', marginLeft: 5 }}>8, 14-18</Text>
+                                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: COLORS.appgreen, fontSize: vs(12), lineHeight: 80, textAlignVertical: 'top', marginLeft: 5 }}>{i18next.language === 'ar' ? '٧، ٨ و ١٤-١٧' : '7, 8 and 14-17'}</Text>
                                                                 </View>
                                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : "row", marginTop: vs(-15) }}>
                                                                     <View style={{ alignItems: "center", marginRight: 15 }}>
@@ -514,7 +525,7 @@ const Medication: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 </View>
                                                                 <View style={{ flexDirection: i18next.language === "ar" ? "row-reverse" : "row" }}>
                                                                     <Image source={i18next.language === "ar" ? ICONS.dontAr : ICONS.dont} style={{ width: scale(75), height: vs(75), resizeMode: "contain", marginTop: -20 }} />
-                                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: '#e62341', fontSize: vs(12), lineHeight: 30, textAlignVertical: 'top', marginLeft: 5 }}>4, 5</Text>
+                                                                    <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.h1, color: '#e62341', fontSize: vs(12), lineHeight: 30, textAlignVertical: 'top', marginLeft: 5 }}>{i18next.language === 'ar' ? "٣، ٤" : '3, 4'}</Text>
                                                                 </View>
                                                                 <View style={{ flexWrap: "wrap", flexDirection: i18next.language === 'ar' ? "row-reverse" : 'row', marginTop: vs(-18) }}>
                                                                     <View style={{ alignItems: "center", marginRight: 15 }}>

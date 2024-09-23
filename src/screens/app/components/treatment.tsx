@@ -239,7 +239,7 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                         lineHeight: 20,
                                         textAlignVertical: 'top',
                                         marginLeft: 1
-                                    }}>13
+                                    }}>{i18next.language === 'ar' ? '١٣' : '13'}
                                     </Text>
                                 </View>
                                 <Text style={{ fontFamily: i18next.language === 'ar' ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11), textAlign: i18next.language === 'ar' ? 'right' : "justify", marginBottom: i18next.language === 'ar' ? 5 : 0 }}><Text style={{ color: COLORS.secondary }}>• </Text>{t('medical-li-1')}</Text>
@@ -460,13 +460,13 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(5.5), right: i18next.language === "en" ? scale(35) : 0, top: vs(12), color: COLORS.secondary }}>{'®️'}</Text>}
                                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(172) : 0, top: vs(0), color: COLORS.secondary }}>{'®️'}</Text>}
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(100) : 0, bottom: vs(8), color: COLORS.secondary }}>{'13'}</Text>}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(110) : 0, bottom: vs(8), color: COLORS.secondary }}>{'13'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), left: i18next.language === "ar" ? scale(110) : 0, bottom: vs(8), color: COLORS.secondary }}>{'١٣'}</Text>}
                                                             </View>
                                                             <View>
                                                                 {i18next.language === "ar" && <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: i18next.language === "ar" ? 5 : -8 }}>{t('administrator2')}</Text>}
                                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(68) : 0, top: vs(20), color: COLORS.secondary }}>{`®️`}</Text>}
                                                                 {/* {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(195) : 0, top: vs(2.5), color: COLORS.secondary }}>{'®️'}</Text>} */}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(18) : 0, bottom: vs(8), color: COLORS.secondary }}>{'18'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(18) : 0, bottom: vs(8), color: COLORS.secondary }}>{'١٣'}</Text>}
                                                             </View>
                                                             <View>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.bold, color: COLORS.secondary, fontSize: vs(12), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 5 }}>{t('admin-heading')}</Text>
@@ -514,11 +514,11 @@ const Treatment: React.FC<{ navigation: any }> = ({ navigation }) => {
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(84) : 0, top: vs(6), color: COLORS.secondary }}>{'®️'}</Text>}
                                                                 {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(152) : 0, top: vs(5), color: COLORS.secondary }}>{'®️'}</Text>}
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "en" ? scale(74) : 0, bottom: vs(10), color: COLORS.secondary }}>{'13'}</Text>}
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(170) : 0, bottom: vs(6), color: COLORS.secondary }}>{'13'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(170) : 0, bottom: vs(6), color: COLORS.secondary }}>{'١٣'}</Text>}
                                                             </View>
                                                             <View>
                                                                 <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.bold : FONTS.bold, color: COLORS.secondary, fontSize: vs(13), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: 8 }}>{t('missed-dose-heading')}</Text>
-                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(72) : 0, top: vs(9), color: COLORS.secondary }}>{'13'}</Text>}
+                                                                {i18next.language === "ar" && <Text style={{ position: "absolute", fontSize: vs(6), right: i18next.language === "ar" ? scale(72) : 0, top: vs(9), color: COLORS.secondary }}>{'١٣'}</Text>}
                                                                 {i18next.language === "en" && <Text style={{ position: "absolute", fontSize: vs(8), right: i18next.language === "en" ? scale(180) : 0, top: vs(9), color: COLORS.secondary }}>{'13'}</Text>}
                                                             </View>
                                                             <Text style={{ fontFamily: i18next.language === "ar" ? FONTS.text_arabic : FONTS.normal, color: COLORS.secondary, fontSize: vs(11.5), textAlign: i18next.language === "ar" ? 'right' : "justify", marginTop: -5 }}>{t('missed-dose-para')}</Text>
